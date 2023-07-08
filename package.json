@@ -1,0 +1,28 @@
+{
+  "name": "digital_twin_p4p",
+  "version": "1.0.0",
+  "description": "Digital Twin Part Four Project",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oeng099/Digital_Twin_P4P.git"
+  },
+  "keywords": [
+    "Digital",
+    "Twin"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/oeng099/Digital_Twin_P4P/issues"
+  },
+  "homepage": "https://github.com/oeng099/Digital_Twin_P4P#readme",
+  "dependencies": {
+    "mipacket": "^1.0.1",
+    "node-fetch": "^3.3.1",
+    "openapi": "^1.0.1"
+  }
+}
