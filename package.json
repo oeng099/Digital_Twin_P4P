@@ -22,8 +22,11 @@
   "homepage": "https://github.com/oeng099/Digital_Twin_P4P#readme",
   "dependencies": {
     "express": "^4.18.2",
+    "install": "^0.13.0",
     "mipacket": "^1.0.1",
     "node-fetch": "^3.3.1",
-    "openapi": "^1.0.1"
+    "npm": "^9.8.0",
+    "openapi": "^1.0.1",
+    "tp-link-tapo-connect": "^1.0.8"
   }
 }
