@@ -23,9 +23,10 @@
   "dependencies": {
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
+    "fs": "^0.0.1-security",
     "install": "^0.13.0",
     "mipacket": "^1.0.1",
-    "node-fetch": "^3.3.1",
+    "node-fetch": "^2.6.12",
     "npm": "^9.8.0",
     "openai": "^3.3.0",
     "openapi": "^1.0.1",

@@ -1,4 +1,4 @@
-import fetch from 'node-fetch';
+const fetch = require('node-fetch')
 
 const encodedParams = new URLSearchParams();
 encodedParams.set('src', 'Hello, world!');
@@ -6,8 +6,9 @@ encodedParams.set('hl', 'en-us');
 encodedParams.set('r', '0');
 encodedParams.set('c', 'mp3');
 encodedParams.set('f', '8khz_8bit_mono');
+encodedParams.set('b64', 'true');
 
-const url = 'https://voicerss-text-to-speech.p.rapidapi.com/?key=%3CREQUIRED%3E';
+const url = 'https://voicerss-text-to-speech.p.rapidapi.com/?key=051f46d8a8ec480799095c7061cfda8f';
 const options = {
   method: 'POST',
   headers: {
@@ -17,9 +18,14 @@ const options = {
   },
   body: encodedParams
 };
+
+module.exports = {
+    result
+}
+
 async function result(){
     try {
-        const response = await fetch(url, options);
+        const response = await fetch(url, options)
         const result = await response.text();
         console.log(result);
     } catch (error) {
