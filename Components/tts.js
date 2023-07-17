@@ -1,4 +1,5 @@
 const fetch = require('node-fetch')
+const fs = require('fs')
 
 const encodedParams = new URLSearchParams();
 encodedParams.set('src', 'Hello, world!');
@@ -25,8 +26,12 @@ module.exports = {
 
 async function result(){
     try {
-        const response = await fetch(url, options)
+        const response = await fetch(url, options);
         const result = await response.text();
+        var data = result;
+        var newData = data.replace(/^data:audio\/\w+;base64,/, "");
+        var buf = Buffer.from(newData, 'base64');
+        fs.writeFile('output.mp3', buf,(err) => err && console.error(err));
         console.log(result);
     } catch (error) {
         console.error(error);
