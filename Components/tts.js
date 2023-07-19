@@ -1,5 +1,5 @@
-const fetch = require('node-fetch')
-const fs = require('fs')
+import * as fetch from "node-fetch"
+import * as fs from "fs"
 
 const encodedParams = new URLSearchParams();
 encodedParams.set('src', 'Hello, world!');
@@ -20,10 +20,6 @@ const options = {
   body: encodedParams
 };
 
-module.exports = {
-    result
-}
-
 async function result(){
     try {
         const response = await fetch(url, options);
@@ -37,3 +33,5 @@ async function result(){
         console.error(error);
     }
 }
+
+export {result}
