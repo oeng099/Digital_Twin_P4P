@@ -16,4 +16,5 @@ const port = 3000;
 // chatGPT.callChatGPT("Hello World")
 // console.log(process.env)
 // tts.result()
-tapo.listDevices();
+// tapo.listDevices();
+
