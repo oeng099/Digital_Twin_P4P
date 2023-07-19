@@ -1,12 +1,8 @@
-
+import * as tapo from "tp-link-tapo-connect"
 
 const email = "wwon866@aucklanduni.ac.nz"
-const password = "part4project"
-const tapo = require('tp-link-tapo-connect') 
+const password = "part4project" 
 var listOfDeviceTokens = []
-module.exports = {
-    listDevices
-}
 
 async function listDevices(){
     try {
@@ -24,3 +20,5 @@ async function listDevices(){
         console.log(error)
     }
 }
+
+export {listDevices}
