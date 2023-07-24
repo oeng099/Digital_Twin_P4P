@@ -1,5 +1,5 @@
-import * as fetch from "node-fetch"
-import * as fs from "fs"
+import fetch from "node-fetch"
+import fs from "fs"
 
 var encodedParams = new URLSearchParams();
 encodedParams.set('hl', 'en-us');

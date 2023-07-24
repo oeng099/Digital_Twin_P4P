@@ -17,7 +17,7 @@ import express from "express"
 
 // chatGPT.callChatGPT("Hello World")
 // console.log(process.env)
-// tts.result()
+// tts.result("The temperature is 400 degrees")
 // tapo.listDevices();
 // airQuality.listReading()
 
