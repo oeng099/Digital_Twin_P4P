@@ -12,4 +12,6 @@ async function listReading(){
     console.log(await d3.csv(url))
 }
 
-listReading()
+
+export {listReading}
+// listReading()
