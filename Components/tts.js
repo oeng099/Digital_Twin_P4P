@@ -1,8 +1,7 @@
 import * as fetch from "node-fetch"
 import * as fs from "fs"
 
-const encodedParams = new URLSearchParams();
-encodedParams.set('src', 'Hello, world!');
+var encodedParams = new URLSearchParams();
 encodedParams.set('hl', 'en-us');
 encodedParams.set('r', '0');
 encodedParams.set('c', 'mp3');
@@ -10,7 +9,7 @@ encodedParams.set('f', '8khz_8bit_mono');
 encodedParams.set('b64', 'true');
 
 const url = 'https://voicerss-text-to-speech.p.rapidapi.com/?key=051f46d8a8ec480799095c7061cfda8f';
-const options = {
+var options = {
   method: 'POST',
   headers: {
     'content-type': 'application/x-www-form-urlencoded',
@@ -20,8 +19,9 @@ const options = {
   body: encodedParams
 };
 
-async function result(){
+async function result(text){
     try {
+        encodedParams.set('src', text);
         const response = await fetch(url, options);
         const result = await response.text();
         var data = result;
