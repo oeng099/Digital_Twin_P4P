@@ -15,7 +15,7 @@ import express from "express"
 //   console.log(`Example app listening at http://localhost:${port}`);
 // });
 
-chatGPT.callChatGPT("Hello World")
+// chatGPT.callChatGPT("Hello World")
 // console.log(process.env)
 // tts.result()
 // tapo.listDevices();

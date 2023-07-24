@@ -1,15 +1,12 @@
-
-
-const { Configuration, OpenAIApi } = require("openai");
-require("dotenv").config()
+// const { Configuration, OpenAIApi } = require("openai");
+import {Configuration, OpenAIApi } from "openai"
+import * as dotenv from "dotenv"
+dotenv.config()
 const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
 });
 const openai = new OpenAIApi(configuration);
 
-module.exports = {
-    callChatGPT
-}
 async function callChatGPT(text){
     try {
         const chatCompletion = await openai.createChatCompletion({
@@ -26,3 +23,6 @@ async function callChatGPT(text){
           }
     }
 }
+
+export {callChatGPT}
+

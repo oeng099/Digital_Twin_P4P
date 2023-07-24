@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Digital Twin Part Four Project",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "test"
   },
@@ -21,6 +22,7 @@
   },
   "homepage": "https://github.com/oeng099/Digital_Twin_P4P#readme",
   "dependencies": {
+    "d3": "^7.8.5",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "fs": "^0.0.1-security",
