@@ -1,6 +1,7 @@
 import fetch from "node-fetch"
 import fs from "fs"
 
+
 var encodedParams = new URLSearchParams();
 encodedParams.set('hl', 'en-us');
 encodedParams.set('r', '0');
@@ -19,7 +20,9 @@ var options = {
   body: encodedParams
 };
 
+
 async function result(text){
+
     try {
         encodedParams.set('src', text);
         const response = await fetch(url, options);
