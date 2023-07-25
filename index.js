@@ -1,10 +1,9 @@
 import * as chatGPT from "./Components/ChatGPT.js"
 import * as tts from "./Components/tts.js"
 import * as tapo from "./Components/tapo.js"
-import * as airQuality from "./Components/airQuality.js"
-import express from "express"
+import * as aQ from "./Components/airQuality.js"
 
-
+// import express from "express"
 // const app = express();
 // const port = 3000;
 
@@ -20,5 +19,7 @@ import express from "express"
 // console.log(process.env)
 // tts.result("The temperature is 400 degrees")
 // tapo.listDevices();
-// airQuality.listReading()
+
+aQ.listCO2Reading()
+
 
