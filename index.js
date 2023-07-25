@@ -22,5 +22,6 @@ import * as sensibo from "./Components/sensibo.js"
 // tapo.listDevices();
 // aQ.listCO2Reading()
 sensibo.turnDeviceOn("XAY6jwyi")
+sensibo.getSpecificDevice("XAY6jwyi")
 
 
