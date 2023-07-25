@@ -13,6 +13,7 @@ async function listAllReading(){
     return readings
 }
 
+
 async function listCO2Reading(){
     var reading = await listAllReading();
     var Co2 = []

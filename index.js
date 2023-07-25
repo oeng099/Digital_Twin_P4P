@@ -17,7 +17,9 @@ import * as aQ from "./Components/airQuality.js"
 
 // chatGPT.callChatGPT("Hello World")
 // console.log(process.env)
-// tts.result()
+// tts.result("The temperature is 400 degrees")
 // tapo.listDevices();
+
 aQ.listCO2Reading()
+
 
