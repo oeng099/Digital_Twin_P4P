@@ -46,6 +46,20 @@ async function turnDeviceOff(deviceUID){
     console.log(res)
 }
 
-export {getSpecificDevice, turnDeviceOn, turnDeviceOff}
+async function setTargetTemperature(deviceUID,temperature){
+    var options = {
+        method: 'PATCH',
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+          },        
+        body: JSON.stringify({
+            newValue: temperature
+          }),
+    }
+    const res = await fetch("https://home.sensibo.com/api/v2/pods/"+deviceUID+"/acStates/targetTemperature?apiKey="+apiKey,options)
+    console.log(res)
+
+}
+export {getSpecificDevice, turnDeviceOn, turnDeviceOff, setTargetTemperature}
 
 // Device UID for IE ROOM: XAY6jwyi
