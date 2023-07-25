@@ -1,20 +1,23 @@
 import * as chatGPT from "./Components/ChatGPT.js"
 import * as tts from "./Components/tts.js"
 import * as tapo from "./Components/tapo.js"
-import express from "express"
-const app = express();
-const port = 3000;
+import * as aQ from "./Components/airQuality.js"
 
-app.get('/', (req, res) => {
-  res.send('Hello World!');
-});
+// import express from "express"
+// const app = express();
+// const port = 3000;
 
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
-});
+// app.get('/', (req, res) => {
+//   res.send('Hello World!');
+// });
+
+// app.listen(port, () => {
+//   console.log(`Example app listening at http://localhost:${port}`);
+// });
 
 // chatGPT.callChatGPT("Hello World")
 // console.log(process.env)
 // tts.result()
 // tapo.listDevices();
+aQ.listCO2Reading()
 
