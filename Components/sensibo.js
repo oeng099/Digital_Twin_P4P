@@ -8,7 +8,8 @@ async function getSpecificDevice(deviceUID){
     const strData = await res.text()
     const dataObj = JSON.parse(strData)["result"]
 
-    console.log(dataObj)
+    console.log(dataObj["acState"])
+    console.log(dataObj["measurements"])
     return dataObj
 }
 

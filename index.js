@@ -20,17 +20,17 @@ import * as sensibo from "./Components/sensibo.js"
 // console.log(process.env)
 // tts.result("The temperature is 400 degrees")
 // tapo.listDevices();
-// aQ.listCO2Reading()
+// aQ.listAllReading()
+// aQ.listTempReading();
+// aQ.listHumidReading();
 console.log('=========================')
-// await sensibo.setTargetTemperature("XAY6jwyi",29)
+// await sensibo.setTargetTemperature("XAY6jwyi",25)
 console.log('=========================')
-await sensibo.getSpecificDevice("XAY6jwyi")
+// await sensibo.getSpecificDevice("XAY6jwyi")
 console.log('=========================')
-await sensibo.turnDeviceOn("XAY6jwyi")
+// await sensibo.turnDeviceOn("XAY6jwyi")
 console.log('=========================')
 
 // const delay = ms => new Promise(res => setTimeout(res, ms));
 // await delay(10000)
 // await sensibo.turnDeviceOff("XAY6jwyi")
-
-
