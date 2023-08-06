@@ -9,7 +9,7 @@ async function listAllReading(){
     "&startTime="+startTime.toISOString()+
     "&endTime="+endTime.toISOString();
     const readings = await d3.csv(url);
-
+    // console.log(readings)
     return readings
 }
 
@@ -23,5 +23,24 @@ async function listCO2Reading(){
     console.log(Co2)
 }
 
-export {listAllReading, listCO2Reading}
+async function listTempReading(){
+    var reading = await listAllReading();
+    var temp = []
+    for (const element of reading){
+        temp.push(element["Temperature"])
+    }
+    console.log(temp)
+}
+
+async function listHumidReading(){
+    var reading = await listAllReading();
+    var humid = []
+    for (const element of reading){
+        humid.push(element["Humidity"])
+    }
+    console.log(humid);
+}
+
+
+export {listAllReading, listCO2Reading, listTempReading, listHumidReading}
 // listReading()

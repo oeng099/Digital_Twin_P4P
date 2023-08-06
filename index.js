@@ -2,6 +2,7 @@ import * as chatGPT from "./Components/ChatGPT.js"
 import * as tts from "./Components/tts.js"
 import * as tapo from "./Components/tapo.js"
 import * as aQ from "./Components/airQuality.js"
+import * as sensibo from "./Components/sensibo.js"
 
 // import express from "express"
 // const app = express();
@@ -19,7 +20,17 @@ import * as aQ from "./Components/airQuality.js"
 // console.log(process.env)
 // tts.result("The temperature is 400 degrees")
 // tapo.listDevices();
+// aQ.listAllReading()
+// aQ.listTempReading();
+// aQ.listHumidReading();
+console.log('=========================')
+// await sensibo.setTargetTemperature("XAY6jwyi",25)
+console.log('=========================')
+// await sensibo.getSpecificDevice("XAY6jwyi")
+console.log('=========================')
+// await sensibo.turnDeviceOn("XAY6jwyi")
+console.log('=========================')
 
-aQ.listCO2Reading()
-
-
+// const delay = ms => new Promise(res => setTimeout(res, ms));
+// await delay(10000)
+// await sensibo.turnDeviceOff("XAY6jwyi")
