@@ -7,7 +7,7 @@ export default function HomePage(){
 return(
 <div className="home-page">
         <h1 className="home-page-header">
-          IE Room Digital Twin
+          Welcome to DigiTwin!
         </h1>
         <div className="navigation-centre-container">
             <div className="temperature-module">

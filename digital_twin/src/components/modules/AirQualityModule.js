@@ -15,11 +15,16 @@ import './AirQualityModule.css';
     }))
 
     return (
-        <StyledCard className={"air-quality-module-card"} sx={{ width: 400, height: 500,  borderRadius: 5, boxShadow: 5, border: 4, borderColor: "#FFFFFF", backgroundColor: "#9e9e9e"}} >
+        <StyledCard className={"air-quality-module-card"} sx={{ width: 400, height: 500,  borderRadius: 5, boxShadow: 5, border: 4, borderColor: "#FFFFFF", backgroundColor: "#F2F4FF"}} >
           <CardContent>
           <div className="module-title">
-            <Typography align='center' sx={{fontSize: 30, fontFamily: 'Jeju Hallasan', color: 'white'}}>
+            <Typography align='center' sx={{fontSize: 48, fontFamily: 'Poppins', color: '#1B2132'}}>
               Air Quality
+            </Typography>
+          </div>
+          <div className="module-text">
+          <Typography align='center' sx={{fontSize: 36, fontFamily: 'Poppins', color: '#1B2132'}}>
+              Current Room Air Quality: 
             </Typography>
           </div>
         </CardContent>

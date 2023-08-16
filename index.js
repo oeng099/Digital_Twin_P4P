@@ -3,23 +3,23 @@ import * as tts from "./Components/tts.js"
 import * as tapo from "./Components/tapo.js"
 import * as aQ from "./Components/airQuality.js"
 
-// import express from "express"
-// const app = express();
-// const port = 3000;
+ import express from "express"
+ const app = express();
+ const port = 3001;
 
-// app.get('/', (req, res) => {
-//   res.send('Hello World!');
-// });
+ app.get('/', (req, res) => {
+   res.send('Hello World!');
+ });
 
-// app.listen(port, () => {
-//   console.log(`Example app listening at http://localhost:${port}`);
-// });
+ app.listen(port, () => {
+   console.log(`Example app listening at http://localhost:${port}`);
+ });
 
 // chatGPT.callChatGPT("Hello World")
 // console.log(process.env)
 // tts.result("The temperature is 400 degrees")
 // tapo.listDevices();
 
-aQ.listCO2Reading()
+//aQ.listCO2Reading()
 
 
