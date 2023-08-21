@@ -28,16 +28,19 @@ import './TemperatureModule.css';
             </Typography>
           </div>
         </CardContent>
-        <div className="display-container">
+          <div className="temp-display-back">
           <CardMedia
           className={"temperature-display-background"}
           image={require('..//images/temperature_display.png')}
           title="Temperature Display"
-          sx={{height: 330, width: 320, objectFit: "fill", marginLeft: 6, marginTop: 3}}
-        />
-          <p className={"display-text-temp"}>
-          26°C
-          </p>
+          sx={{height: 330, width: 320, objectFit: "fill", marginLeft: 6, marginTop: 3, position: 'relative'}}
+        >
+          <div>
+            <Typography align='center' gutterBottom="true" sx={{fontSize: 72, fontFamily: 'Poppins', color: '#FFFFFF', position: 'relative', transform: 'translate(0%, 100%)'}}>
+            24°C
+          </Typography>
+          </div>
+          </CardMedia>
         </div>
         <CardActions>
         </CardActions>

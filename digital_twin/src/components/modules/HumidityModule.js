@@ -34,10 +34,13 @@ import './HumidityModule.css';
           image={require('..//images/humidity_display.png')}
           title="Humidity Display"
           sx={{height: 330, width: 320, objectFit: "fill", marginLeft: 6, marginTop: 3}}
-        />
-          <p className={"display-text-hum"}>
-            70%
-          </p>
+        >
+          <div>
+            <Typography align='center' gutterBottom="true" sx={{fontSize: 72, fontFamily: 'Poppins', color: '#FFFFFF', position: 'relative', transform: 'translate(0%, 100%)'}}>
+            26%
+          </Typography>
+          </div>
+          </CardMedia>
         </div>
         <CardActions></CardActions>
         <CardActions>

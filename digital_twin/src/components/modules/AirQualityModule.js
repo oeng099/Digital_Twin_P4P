@@ -34,10 +34,13 @@ import './AirQualityModule.css';
           image={require('..//images/air_quality_display.png')}
           title="Air QualityDisplay"
           sx={{height: 330, width: 320, objectFit: "fill", marginLeft: 6, marginTop: 3}}
-        />
-          <p className={"display-text-aq"}>
-            40
-          </p>
+        >
+            <div>
+            <Typography align='center' gutterBottom="true" sx={{fontSize: 72, fontFamily: 'Poppins', color: '#FFFFFF', position: 'relative', transform: 'translate(0%, 100%)'}}>
+            50
+          </Typography>
+          </div>
+          </CardMedia>
         </div>
         <CardActions>
         </CardActions>

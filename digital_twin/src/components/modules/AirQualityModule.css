@@ -12,10 +12,10 @@
 
   .display-text-aq{
     z-index: 1;
-    position: absolute;
+    position: relative;
     color: white;
     font-size: 72px;
     font-weight:bold;
-    left: 1550px;
+    left: 1500px;
     top: 475px;
   }
