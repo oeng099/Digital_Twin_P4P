@@ -15,7 +15,7 @@ import './AirQualityModule.css';
     }))
 
     return (
-        <StyledCard className={"air-quality-module-card"} sx={{ width: 400, height: 500,  borderRadius: 5, boxShadow: 5, border: 4, borderColor: "#FFFFFF", backgroundColor: "#F2F4FF"}} >
+        <StyledCard className={"air-quality-module-card"} sx={{ width: 400, height: 700,  borderRadius: 5, boxShadow: 5, border: 4, borderColor: "#FFFFFF", backgroundColor: "#F2F4FF"}} >
           <CardContent>
           <div className="module-title">
             <Typography align='center' sx={{fontSize: 48, fontFamily: 'Poppins', color: '#1B2132'}}>
@@ -28,6 +28,17 @@ import './AirQualityModule.css';
             </Typography>
           </div>
         </CardContent>
+        <div className="display-container">
+          <CardMedia
+          className={"air-quality-display-background"}
+          image={require('..//images/air_quality_display.png')}
+          title="Air QualityDisplay"
+          sx={{height: 330, width: 320, objectFit: "fill", marginLeft: 6, marginTop: 3}}
+        />
+          <p className={"display-text-aq"}>
+            40
+          </p>
+        </div>
         <CardActions>
         </CardActions>
         </StyledCard>

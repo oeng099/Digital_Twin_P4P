@@ -15,7 +15,7 @@ import './HumidityModule.css';
     }))
 
     return (
-        <StyledCard className={"humidity-module-card"} sx={{ width: 400, height: 500,  borderRadius: 5, boxShadow: 5, border: 4, borderColor: "#FFFFFF", backgroundColor: "#F2F4FF" }} >
+        <StyledCard className={"humidity-module-card"} sx={{ width: 400, height: 700,  borderRadius: 5, boxShadow: 5, border: 4, borderColor: "#FFFFFF", backgroundColor: "#F2F4FF" }} >
           <CardContent>
           <div className="module-title">
             <Typography align='center' sx={{fontSize: 48, fontFamily: 'Poppins', color: '#1B2132'}}>
@@ -28,6 +28,18 @@ import './HumidityModule.css';
             </Typography>
           </div>
         </CardContent>
+        <div className="display-container">
+          <CardMedia
+          className={"humidity-display-background"}
+          image={require('..//images/humidity_display.png')}
+          title="Humidity Display"
+          sx={{height: 330, width: 320, objectFit: "fill", marginLeft: 6, marginTop: 3}}
+        />
+          <p className={"display-text-hum"}>
+            70%
+          </p>
+        </div>
+        <CardActions></CardActions>
         <CardActions>
         </CardActions>
         </StyledCard>

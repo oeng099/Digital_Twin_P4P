@@ -5,3 +5,13 @@
   .humidity-module-card{
       margin-right: 20px;
   }
+
+  .display-text-hum{
+    z-index: 1;
+    position: absolute;
+    color: white;
+    font-size: 72px;
+    font-weight:bold;
+    left: 900px;
+    top: 475px;
+  }

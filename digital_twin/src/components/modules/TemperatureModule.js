@@ -15,7 +15,7 @@ import './TemperatureModule.css';
     }))
 
     return (
-        <StyledCard className={"temperature-module-card"} sx={{ width: 400, height: 500,  borderRadius: 5, boxShadow: 5, border: 4, borderColor: "#FFFFFF", backgroundColor: "F2F4FF" }} >
+        <StyledCard className={"temperature-module-card"} sx={{ width: 400, height: 700,  borderRadius: 5, boxShadow: 5, border: 4, borderColor: "#FFFFFF", backgroundColor: "F2F4FF" }} >
           <CardContent>
           <div className="module-title">
             <Typography align='center' sx={{fontSize: 48, fontFamily: 'Poppins', color: "#1B2132"}}>
@@ -28,6 +28,17 @@ import './TemperatureModule.css';
             </Typography>
           </div>
         </CardContent>
+        <div className="display-container">
+          <CardMedia
+          className={"temperature-display-background"}
+          image={require('..//images/temperature_display.png')}
+          title="Temperature Display"
+          sx={{height: 330, width: 320, objectFit: "fill", marginLeft: 6, marginTop: 3}}
+        />
+          <p className={"display-text-temp"}>
+          26°C
+          </p>
+        </div>
         <CardActions>
         </CardActions>
         </StyledCard>
