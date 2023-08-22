@@ -15,6 +15,9 @@ import './TemperatureModule.css';
     //const temperatureReading = await sensibo.getSpecificDevice("XAY6jwyi");
     //console.log("This is the temparature reading: " + temperatureReading);
 
+
+  export default function TemperatureModule() {
+
     const StyledCard = styled(Card)(({ theme }) => ({
       "&:hover": { transform: "scale3d(1.02, 1.02, 1)" },
     }))
@@ -43,7 +46,7 @@ import './TemperatureModule.css';
         >
           <div>
             <Typography align='center' gutterBottom="true" sx={{fontSize: 72, fontFamily: 'Poppins', color: '#FFFFFF', position: 'relative', transform: 'translate(0%, 100%)'}}>
-              24°C
+            24°C
           </Typography>
           </div>
           </CardMedia>
