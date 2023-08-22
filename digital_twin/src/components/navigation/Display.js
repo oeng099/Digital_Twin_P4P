@@ -1,6 +1,7 @@
 import "./Display.css";
 import BackButton from "./BackButton";
 import { useNavigate } from 'react-router-dom';
+import ChangeSection from "./ChangeSection";
 
 
 export default function Display({modulePage, moduleMeasurement, targetMeasurement}){
@@ -17,15 +18,16 @@ export default function Display({modulePage, moduleMeasurement, targetMeasuremen
                   <div className="module-text">
                         Current {modulePage} :
                   </div>
-                  <div className="module-text">
+                  <div className="module-number">
                         {moduleMeasurement}
                   </div>
                   <div className="module-text">
                         Target {modulePage} :
                   </div>
-                  <div className="module-text">
+                  <div className="module-number">
                         {targetMeasurement}
                   </div>
+                  <ChangeSection modulePage={modulePage}/>
             </div>
       );
 }
