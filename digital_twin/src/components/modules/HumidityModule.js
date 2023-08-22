@@ -15,6 +15,7 @@ import './HumidityModule.css';
     }))
 
     return (
+      <Link style={{textDecoration: 'none'}} to={"/humidity"}>
         <StyledCard className={"humidity-module-card"} sx={{ width: 400, height: 700,  borderRadius: 5, boxShadow: 5, border: 4, borderColor: "#FFFFFF", backgroundColor: "#F2F4FF" }} >
           <CardContent>
           <div className="module-title">
@@ -46,5 +47,6 @@ import './HumidityModule.css';
         <CardActions>
         </CardActions>
         </StyledCard>
+        </Link>
     );
   }

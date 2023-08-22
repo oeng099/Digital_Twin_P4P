@@ -7,6 +7,14 @@ import CardMedia from '@mui/material/CardMedia';
 import { Link } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
 import './TemperatureModule.css';
+//import * as sensibo from "../"
+
+  export default function TemperatureModule() {
+
+    //await sensibo.turnDeviceOn("XAY6jwyi");
+    //const temperatureReading = await sensibo.getSpecificDevice("XAY6jwyi");
+    //console.log("This is the temparature reading: " + temperatureReading);
+
 
   export default function TemperatureModule() {
 
@@ -15,6 +23,7 @@ import './TemperatureModule.css';
     }))
 
     return (
+      <Link style={{textDecoration: 'none'}} to={"/temperature"}>
         <StyledCard className={"temperature-module-card"} sx={{ width: 400, height: 700,  borderRadius: 5, boxShadow: 5, border: 4, borderColor: "#FFFFFF", backgroundColor: "F2F4FF" }} >
           <CardContent>
           <div className="module-title">
@@ -45,5 +54,6 @@ import './TemperatureModule.css';
         <CardActions>
         </CardActions>
         </StyledCard>
+        </Link>
     );
   }

@@ -15,6 +15,7 @@ import './AirQualityModule.css';
     }))
 
     return (
+      <Link style={{textDecoration: 'none'}} to={"/airQuality"}>
         <StyledCard className={"air-quality-module-card"} sx={{ width: 400, height: 700,  borderRadius: 5, boxShadow: 5, border: 4, borderColor: "#FFFFFF", backgroundColor: "#F2F4FF"}} >
           <CardContent>
           <div className="module-title">
@@ -45,5 +46,6 @@ import './AirQualityModule.css';
         <CardActions>
         </CardActions>
         </StyledCard>
+        </Link>
     );
   }
