@@ -15,9 +15,6 @@ import './TemperatureModule.css';
     //const temperatureReading = await sensibo.getSpecificDevice("XAY6jwyi");
     //console.log("This is the temparature reading: " + temperatureReading);
 
-
-  export default function TemperatureModule() {
-
     const StyledCard = styled(Card)(({ theme }) => ({
       "&:hover": { transform: "scale3d(1.02, 1.02, 1)" },
     }))
