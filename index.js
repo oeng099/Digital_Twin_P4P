@@ -5,17 +5,17 @@ import * as aQ from "./Components/airQuality.js"
 import * as sensibo from "./Components/sensibo.js"
 import {db} from "./Components/firebase/admin.js"
 
-// import express from "express"
-// const app = express();
-// const port = 3000;
+ import express from "express"
+ const app = express();
+ const port = 3001;
 
-// app.get('/', (req, res) => {
-//   res.send('Hello World!');
-// });
+ app.get('/', (req, res) => {
+   res.send('Hello World!');
+ });
 
-// app.listen(port, () => {
-//   console.log(`Example app listening at http://localhost:${port}`);
-// });
+ app.listen(port, () => {
+   console.log(`Example app listening at http://localhost:${port}`);
+ });
 
 // chatGPT.callChatGPT("Hello World")
 // console.log(process.env)
