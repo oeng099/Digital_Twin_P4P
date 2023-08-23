@@ -41,7 +41,7 @@ async function turnDeviceOn(deviceUID){
 }
 
 async function turnDeviceOff(deviceUID){
-
+    var i = 0;
     var options = {
         method: 'PATCH',
         headers: {

@@ -21,6 +21,7 @@ async function listCO2Reading(){
         Co2.push(element["CO2"])
     }
     console.log(Co2)
+    return Co2
 }
 
 async function listTempReading(){
