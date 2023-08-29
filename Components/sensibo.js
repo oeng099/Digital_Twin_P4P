@@ -12,10 +12,10 @@ async function getSpecificDevice(deviceUID){
     const strData = await res.text()
     const dataObj = JSON.parse(strData)["result"]
 
-    console.log("Current AC State")
-    console.log(dataObj["acState"])
-    console.log("Measurements")
-    console.log(dataObj["measurements"])
+    // console.log("Current AC State")
+    // console.log(dataObj["acState"])
+    // console.log("Measurements")
+    // console.log(dataObj["measurements"])
     return dataObj
 }
 
@@ -41,7 +41,7 @@ async function turnDeviceOn(deviceUID){
 }
 
 async function turnDeviceOff(deviceUID){
-
+    var i = 0;
     var options = {
         method: 'PATCH',
         headers: {
