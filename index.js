@@ -3,8 +3,7 @@ import * as tts from "./Components/tts.js"
 import * as tapo from "./Components/tapo.js"
 import * as aQ from "./Components/airQuality.js"
 import * as sensibo from "./Components/sensibo.js"
-import {db} from "./Components/firebase/admin.js"
-
+import * as logic from "./Components/logic.js"
  import express from "express"
  const app = express();
  const port = 3001;
@@ -17,6 +16,7 @@ import {db} from "./Components/firebase/admin.js"
    console.log(`Example app listening at http://localhost:${port}`);
  });
 
+logic.start()
 // chatGPT.callChatGPT("Hello World")
 // console.log(process.env)
 // tts.result("The temperature is 400 degrees")

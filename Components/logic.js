@@ -24,6 +24,7 @@ while(true){
     console.log("*****")
     saveToCo2();
     saveToTempAndHumid();
+    console.log("waiting 2 minutes")
     const delay = ms => new Promise(res => setTimeout(res, ms));
     await delay(120000)
 }
@@ -80,6 +81,8 @@ async function saveToTempAndHumid(){
         console.log(error);
     }
 }
-start();
+// start();
 // saveToCo2();
 // saveToTempAndHumid();
+
+export {start}
