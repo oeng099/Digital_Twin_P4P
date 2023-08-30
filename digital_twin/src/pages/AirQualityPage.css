@@ -1,6 +1,6 @@
 .aq-page-background{
       position: relative;
-      background-color: #388E3C;
+      background-color: #4361EE;
       height: 100vh;
       width: 100vw;
       align-items: center;
@@ -12,9 +12,8 @@
 .aq-page-title{
       color: white;
       position: relative;
-      align-items: center;
+      left: 55%;
       width: 100vw;
-      text-align: center;
       margin-top: 0;
       font-size: 72px;
 }
