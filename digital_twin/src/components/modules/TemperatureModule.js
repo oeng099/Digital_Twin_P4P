@@ -7,17 +7,22 @@ import CardMedia from '@mui/material/CardMedia';
 import { Link } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
 import './TemperatureModule.css';
-//import * as sensibo from "../"
+import * as sensibo from "../sensibo"
+
+  /*async function getTemperature(){
+    const temperatureReading = await sensibo.getSpecificDevice("XAY6jwyi");
+    console.log("This is the temparature reading: " + temperatureReading["measurements"]["temperature"]);
+    return temperatureReading["measurements"]["temperature"];
+  }*/
 
   export default function TemperatureModule() {
 
-    //await sensibo.turnDeviceOn("XAY6jwyi");
-    //const temperatureReading = await sensibo.getSpecificDevice("XAY6jwyi");
-    //console.log("This is the temparature reading: " + temperatureReading);
+    //const temperature = await getTemperature().then(console.log("test2"));
 
     const StyledCard = styled(Card)(({ theme }) => ({
       "&:hover": { transform: "scale3d(1.02, 1.02, 1)" },
     }))
+
 
     return (
       <Link style={{textDecoration: 'none'}} to={"/temperature"}>
@@ -43,7 +48,7 @@ import './TemperatureModule.css';
         >
           <div>
             <Typography align='center' gutterBottom="true" sx={{fontSize: 72, fontFamily: 'Poppins', color: '#FFFFFF', position: 'relative', transform: 'translate(0%, 100%)'}}>
-            24°C
+              24
           </Typography>
           </div>
           </CardMedia>

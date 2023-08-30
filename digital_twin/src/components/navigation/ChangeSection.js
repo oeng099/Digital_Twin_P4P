@@ -13,7 +13,7 @@ export default function ChangeSection({modulePage}){
                   <div className="change-section-text">
                         Change Target {modulePage} :
                   <form name="tempForm" className="change-form" action='' method='GET'>
-                        <input type="text" placeholder={modulePage} id='temperatureInput' name='TemperatureInput' value=''/><br></br>
+                        <input type="text" placeholder={modulePage} id='temperatureInput' name='TemperatureInput' defaultValue={''}/><br></br>
                         <input type="button" value="Submit" name='SubmitButton' onClick={testResults()}></input>
                   </form>
                   </div>
