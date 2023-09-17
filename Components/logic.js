@@ -23,13 +23,20 @@ while(true){
     }
     console.log("*****")
     saveToCo2();
-    saveToTempAndHumid();
-    console.log("waiting 2 minutes")
+    saveToTemp();
+    saveToHumid();
+    checkTemp();
+    console.log("waiting 5 minutes")
     const delay = ms => new Promise(res => setTimeout(res, ms));
-    await delay(120000)
+    await delay(300000)
 }
 }
 
+async function checkTemp(){
+    const sensiboStats = await sensibo.getSpecificDevice("XAY6jwyi")
+    const currentTemp = sensiboStats["measurements"]["temperature"];
+    
+}
 async function saveToCo2(){
     const co2Ref = db.collection("co2");
     const co2ReadingList = await aQ.listCO2Reading()
@@ -47,13 +54,35 @@ async function saveToCo2(){
                 })
         });
     } catch (error) {
-        console.log(error);
+        console.log(error)
+        console.log("retrying")
+        saveToCo2()
     }
 }
 
-async function saveToTempAndHumid(){
-    const tempRef = db.collection("temperature");
+async function saveToHumid(){
     const humidRef = db.collection("humidity");
+    sensibo.getSpecificDevice("XAY6jwyi")
+    const newDate = new Date()
+    try{
+        humidRef.get().then((snapshot) => {
+            
+            let humid = {
+                humidity: sensiboStats["measurements"]["humidity"],
+            }
+            humidRef.doc(newDate.toString()).set(humid)
+                .then((_docRef) => {
+                    console.log("added Humidity")
+                })
+        });
+    } catch (error){
+        console.log(error)
+        console.log("retrying")
+        saveToHumid()
+    }
+}
+async function saveToTemp(){
+    const tempRef = db.collection("temperature");
     const sensiboStats = await sensibo.getSpecificDevice("XAY6jwyi")
     const newDate = new Date()
     try {
@@ -65,16 +94,6 @@ async function saveToTempAndHumid(){
             tempRef.doc(newDate.toString()).set(temp)
                 .then((_docRef) => {
                     console.log("added temperature")
-                })
-        });
-        humidRef.get().then((snapshot) => {
-            
-            let humid = {
-                humidity: sensiboStats["measurements"]["humidity"],
-            }
-            humidRef.doc(newDate.toString()).set(humid)
-                .then((_docRef) => {
-                    console.log("added Humidity")
                 })
         });
     } catch (error) {
