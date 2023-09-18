@@ -13,7 +13,7 @@ async function getSpecificDevice(deviceUID){
     const dataObj = JSON.parse(strData)["result"]
 
     // console.log("Current AC State")
-    console.log(dataObj["acState"])
+    // console.log(dataObj["acState"])
     // console.log("Measurements")
     // console.log(dataObj["measurements"])
     return dataObj
@@ -36,8 +36,9 @@ async function turnDeviceOn(deviceUID){
     while((res.status == 408) & (i < 5)){
       console.log("timed out "+(i+1)+"times, retrying")
       res = await fetch("https://home.sensibo.com/api/v2/pods/"+deviceUID+"/acStates/on?apiKey="+apiKey,options)
+      i++
     }
-    console.log(res)
+    // console.log(res)
 }
 
 async function turnDeviceOff(deviceUID){
@@ -57,8 +58,9 @@ async function turnDeviceOff(deviceUID){
     while((res.status == 408) & (i < 5)){
       console.log("timed out "+(i+1)+"times, retrying")
       res = await fetch("https://home.sensibo.com/api/v2/pods/"+deviceUID+"/acStates/on?apiKey="+apiKey,options)
+      i++;
     }
-    console.log(res)
+    // console.log(res)
 }
 
 async function setTargetTemperature(deviceUID,temperature){

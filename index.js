@@ -16,7 +16,7 @@ import * as logic from "./Components/logic.js"
    console.log(`Example app listening at http://localhost:${port}`);
  });
 
-// logic.start()
+logic.start()
 // chatGPT.callChatGPT("Hello World")
 // console.log(process.env)
 // tts.result("The temperature is 400 degrees")

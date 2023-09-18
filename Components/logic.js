@@ -25,7 +25,7 @@ while(true){
     saveToCo2();
     saveToTemp();
     saveToHumid();
-    regulateTemp();
+    // regulateTemp();
     console.log("waiting 5 minutes")
     const delay = ms => new Promise(res => setTimeout(res, ms));
     await delay(300000)
@@ -36,19 +36,27 @@ async function regulateTemp(){
     const sensiboStats = await sensibo.getSpecificDevice("XAY6jwyi")
     const currentTemp = sensiboStats["measurements"]["temperature"];
     const targetTemp = sensiboStats["acState"]["targetTemperature"];
+    console.log("CurrentTemp: "+currentTemp+" | targetTemp: "+targetTemp)
     try {
         if(currentTemp > targetTemp){
             if(sensiboStats["acState"]["mode"] == "heat"){
                 await sensibo.setMode("XAY6jwyi", "cool")
+                console.log("set mode to cool");
+                if(!sensiboStats["acState"]["on"]){
+                    await sensibo.turnDeviceOn("XAY6jwyi")
+                }
             }
         }else if(currentTemp < targetTemp){
             if(sensiboStats["acState"]["mode"] == "cool"){
                 await sensibo.setMode("XAY6jwyi", "heat")
+                console.log("set mode to heat")
+                if(!sensiboStats["acState"]["on"]){
+                    await sensibo.turnDeviceOn("XAY6jwyi")
+                }
             }
         } else{
             await sensibo.turnDeviceOff("XAY6jwyi")
         }
-        await sensibo.turnDeviceOn("XAY6jwyi")
     } catch (error) {
         console.log(error)
         console.log('retrying')
@@ -82,7 +90,8 @@ async function saveToCo2(){
 
 async function saveToHumid(){
     const humidRef = db.collection("humidity");
-    sensibo.getSpecificDevice("XAY6jwyi")
+    const sensiboStats = await sensibo.getSpecificDevice("XAY6jwyi")
+    // console.log(sensiboStats)
     const newDate = new Date()
     try{
         humidRef.get().then((snapshot) => {
