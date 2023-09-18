@@ -13,7 +13,7 @@ async function getSpecificDevice(deviceUID){
     const dataObj = JSON.parse(strData)["result"]
 
     // console.log("Current AC State")
-    // console.log(dataObj["acState"])
+    console.log(dataObj["acState"])
     // console.log("Measurements")
     // console.log(dataObj["measurements"])
     return dataObj
@@ -74,6 +74,20 @@ async function setTargetTemperature(deviceUID,temperature){
     const res = await fetch("https://home.sensibo.com/api/v2/pods/"+deviceUID+"/acStates/targetTemperature?apiKey="+apiKey,options)
     console.log(res.status)
 }
-export {getAllDevice,getSpecificDevice, turnDeviceOn, turnDeviceOff, setTargetTemperature}
+
+async function setMode(deviceUID,mode){
+  var options = {
+      method: 'PATCH',
+      headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        },        
+      body: JSON.stringify({
+          newValue: mode
+        }),
+  }
+  const res = await fetch("https://home.sensibo.com/api/v2/pods/"+deviceUID+"/acStates/mode?apiKey="+apiKey,options)
+  console.log(res.status)
+}
+export {getAllDevice,getSpecificDevice, turnDeviceOn, turnDeviceOff, setTargetTemperature, setMode}
 
 // Device UID for IE ROOM: XAY6jwyi
