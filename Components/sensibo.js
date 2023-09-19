@@ -8,6 +8,7 @@ async function getAllDevice(){
 }
 
 async function getSpecificDevice(deviceUID){
+  try {
     const res = await fetch("https://home.sensibo.com/api/v2/pods/"+deviceUID+"?fields=*&apiKey="+apiKey)
     const strData = await res.text()
     const dataObj = JSON.parse(strData)["result"]
@@ -17,6 +18,11 @@ async function getSpecificDevice(deviceUID){
     // console.log("Measurements")
     // console.log(dataObj["measurements"])
     return dataObj
+  } catch (error) {
+    console.log(error)
+    console.log("retrying")
+    getSpecificDevice(deviceUID)
+  }
 }
 
 async function turnDeviceOn(deviceUID){
