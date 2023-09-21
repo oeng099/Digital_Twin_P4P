@@ -1,7 +1,7 @@
 import fetch from "node-fetch";
-//import * as dotenv from "dotenv"
-//dotenv.config()
-const apiKey = 'frdgqSCNo5Hz86ejClFXyvt6ihy4Pp'
+import * as dotenv from "dotenv"
+dotenv.config()
+const apiKey = process.env.IE_ROOM
 
 async function getAllDevice(){
   fetch("https://home.sensibo.com/api/v2/users/me/pods?fields=*&apiKey="+apiKey).then(res => res.text()).then((res) => JSON.parse(res)).then(res =>console.log(res["result"]))
@@ -12,10 +12,10 @@ async function getSpecificDevice(deviceUID){
     const strData = await res.text()
     const dataObj = JSON.parse(strData)["result"]
 
-    console.log("Current AC State")
-    console.log(dataObj["acState"])
-    console.log("Measurements")
-    console.log(dataObj["measurements"])
+    // console.log("Current AC State")
+    // console.log(dataObj["acState"])
+    // console.log("Measurements")
+    // console.log(dataObj["measurements"])
     return dataObj
 }
 
@@ -41,7 +41,6 @@ async function turnDeviceOn(deviceUID){
 }
 
 async function turnDeviceOff(deviceUID){
-
     var i = 0;
     var options = {
         method: 'PATCH',
