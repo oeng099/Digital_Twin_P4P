@@ -1,7 +1,25 @@
 import logo from './logo.svg';
 import './App.css';
+import * as sensibo from "./components/sensibo"
+import { useEffect, useState } from 'react';
 
 function App() {
+
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    async function fetchData() {
+      try{
+        const sensiboResult = await JSON.parse(sensibo.getSpecificDevice("XAY6jwyi")["measurements"]["temperature"]);
+        console.log(sensiboResult);
+      } catch(error) {
+        setError(error);
+      }
+    }
+    fetchData();
+  }, []); // Or [] if effect doesn't need props or state
+
+
   return (
     <div className="App">
       <header className="App-header">
