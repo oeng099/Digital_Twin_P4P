@@ -70,6 +70,7 @@ async function turnDeviceOff(deviceUID){
 }
 
 async function setTargetTemperature(deviceUID,temperature){
+  try {
     var options = {
         method: 'PATCH',
         headers: {
@@ -80,20 +81,31 @@ async function setTargetTemperature(deviceUID,temperature){
           }),
     }
     const res = await fetch("https://home.sensibo.com/api/v2/pods/"+deviceUID+"/acStates/targetTemperature?apiKey="+apiKey,options)
+  } catch (error) {
+    console.log(error)
+    console.log("retrying changing temp")
+    setTargetTemperature(deviceUID,temperature)
+  }
     console.log(res.status)
 }
 
 async function setMode(deviceUID,mode){
-  var options = {
-      method: 'PATCH',
-      headers: {
-          'Content-type': 'application/json; charset=UTF-8',
-        },        
-      body: JSON.stringify({
-          newValue: mode
-        }),
+  try {
+    var options = {
+        method: 'PATCH',
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+          },        
+        body: JSON.stringify({
+            newValue: mode
+          }),
+    }
+    const res = await fetch("https://home.sensibo.com/api/v2/pods/"+deviceUID+"/acStates/mode?apiKey="+apiKey,options)
+  } catch (error) {
+    console.log(error)
+    console.log("retrying changing mode")
+    setMode(deviceUID, mode)
   }
-  const res = await fetch("https://home.sensibo.com/api/v2/pods/"+deviceUID+"/acStates/mode?apiKey="+apiKey,options)
   console.log(res.status)
 }
 export {getAllDevice,getSpecificDevice, turnDeviceOn, turnDeviceOff, setTargetTemperature, setMode}
