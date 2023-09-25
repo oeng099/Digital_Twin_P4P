@@ -2,6 +2,8 @@ import logo from './logo.svg';
 import './App.css';
 import * as sensibo from "./components/sensibo"
 import { useEffect, useState } from 'react';
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import HomePage from './pages/HomePage';
 
 function App() {
 
@@ -21,7 +23,14 @@ function App() {
 
 
   return (
-    <div className="App">
+
+    <Router>
+      <Routes>
+        <Route path='/' element={<HomePage/>}/>
+      </Routes>
+    </Router>
+
+    /*<div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
@@ -36,7 +45,7 @@ function App() {
           Learn React
         </a>
       </header>
-    </div>
+    </div>*/
   );
 }
 
