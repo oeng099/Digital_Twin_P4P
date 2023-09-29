@@ -2,6 +2,8 @@ import './HomePage.css';
 import TemperatureModule from '../components/modules/TemperatureModule';
 import HumidityModule from '../components/modules/HumidityModule';
 import AirQualityModule from '../components/modules/AirQualityModule';
+import { useRef } from 'react';
+//import { db } from "../components/firebase/admin";
 
 export default function HomePage(){
 

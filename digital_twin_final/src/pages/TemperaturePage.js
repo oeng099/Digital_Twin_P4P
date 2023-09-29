@@ -1,6 +1,6 @@
 import "./TemperaturePage.css";
 import Display from "../components/navigation/Display";
-import {db} from "../components/firebase/admin";
+//import {db} from "../components/firebase/admin";
 import { useEffect, useState } from "react";
 
 export default function TemperaturePage(){
