@@ -36,7 +36,7 @@ function App() {
 
   return (
 
-    /*<Router>
+    <Router>
       <Routes>
         <Route path='/' element={<HomePage/>}/>
 
@@ -50,14 +50,7 @@ function App() {
           <Route index element={<AirQualityPage />}/>
         </Route>
       </Routes>
-    </Router>*/
-
-    <div className="App">
-      <form onSubmit={submithandler}>
-        <input type= "text" ref={dataRef} />
-        <button type = "submit">Save</button>
-      </form>
-    </div>
+    </Router>
   );
 }
 

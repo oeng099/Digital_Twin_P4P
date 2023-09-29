@@ -8,6 +8,9 @@ import { Link } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
 import './TemperatureModule.css';
 import * as sensibo from "../sensibo"
+import { useState, useEffect } from 'react';
+import { collection, getDocs } from "firebase/firestore";
+import firestore from "../firebase/firebase";
 
   /*async function getTemperature(){
     const temperatureReading = await sensibo.getSpecificDevice("XAY6jwyi");
@@ -22,6 +25,25 @@ import * as sensibo from "../sensibo"
     const StyledCard = styled(Card)(({ theme }) => ({
       "&:hover": { transform: "scale3d(1.02, 1.02, 1)" },
     }))
+
+    const [temperature, setTemperature] = useState([]);
+
+  const fetchPost = async () => {
+
+      await getDocs(collection(firestore,"temperature"))
+      .then((querySnapshot)=>{
+        const newData = querySnapshot.docs
+          .map((doc) => ({...doc.data(), id:doc.id}));
+          setTemperature(newData);
+          console.log(temperature,newData);
+      })
+  }
+ 
+  useEffect(()=>{
+      fetchPost();
+  }, [])
+
+  console.log(temperature);
 
 
     return (
