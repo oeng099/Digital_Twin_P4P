@@ -3,8 +3,7 @@ import TemperatureModule from '../components/modules/TemperatureModule';
 import HumidityModule from '../components/modules/HumidityModule';
 import AirQualityModule from '../components/modules/AirQualityModule';
 import { useRef } from 'react';
-import { addDoc, collection } from "@firebase/firestore";
-import { db } from "../components/firebase/admin";
+//import { db } from "../components/firebase/admin";
 
 export default function HomePage(){
 

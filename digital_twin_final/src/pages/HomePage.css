@@ -1,0 +1,30 @@
+.home-page{
+      position: relative;
+      background-color: #4361EE;
+      height: 130vh;
+      width: 100vw;
+      align-items: center;
+      margin-top: 0;
+      justify-content: center;
+      font-family: 'Poppins', sans-serif;
+}
+
+.home-page-header{
+      color: white;
+      position: relative;
+      align-items: center;
+      width: 100vw;
+      text-align: center;
+      margin-top: 0;
+      font-size: 72px;
+}
+
+.navigation-centre-container{
+      margin-top: 50px;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      width: 100vw;
+      align-items: center;
+      justify-content: space-around;
+}
