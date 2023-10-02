@@ -7,12 +7,31 @@ import CardMedia from '@mui/material/CardMedia';
 import { Link } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
 import './HumidityModule.css';
+import { useState, useEffect } from 'react';
+import { collection, getDocs } from "firebase/firestore";
+import firestore from "../firebase/firebase";
 
   export default function HumidityModule() {
 
     const StyledCard = styled(Card)(({ theme }) => ({
       "&:hover": { transform: "scale3d(1.02, 1.02, 1)" },
-    }))
+    }));
+
+    const [humidity, setHumidity] = useState([]);
+
+    const fetchPost = async () => {
+  
+        await getDocs(collection(firestore,"humidity"))
+        .then((querySnapshot)=>{
+          const newData = querySnapshot.docs
+            .map((doc) => ({...doc.data(), id:doc.id}));
+            setHumidity(newData[0]["humidity"]);
+        })
+    }
+   
+    useEffect(()=>{
+        fetchPost();
+    }, [])
 
     return (
       <Link style={{textDecoration: 'none'}} to={"/humidity"}>
@@ -38,7 +57,7 @@ import './HumidityModule.css';
         >
           <div>
             <Typography align='center' gutterBottom="true" sx={{fontSize: 72, fontFamily: 'Poppins', color: '#FFFFFF', position: 'relative', transform: 'translate(0%, 100%)'}}>
-            26%
+            {`${JSON.stringify(humidity)}%`}
           </Typography>
           </div>
           </CardMedia>

@@ -7,12 +7,31 @@ import CardMedia from '@mui/material/CardMedia';
 import { Link } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
 import './AirQualityModule.css';
+import { useState, useEffect } from 'react';
+import { collection, getDocs } from "firebase/firestore";
+import firestore from "../firebase/firebase";
 
   export default function AirQualityModule() {
 
     const StyledCard = styled(Card)(({ theme }) => ({
       "&:hover": { transform: "scale3d(1.02, 1.02, 1)" },
     }))
+    
+    const [co2, setco2] = useState([]);
+
+    const fetchPost = async () => {
+  
+        await getDocs(collection(firestore,"co2"))
+        .then((querySnapshot)=>{
+          const newData = querySnapshot.docs
+            .map((doc) => ({...doc.data(), id:doc.id}));
+            setco2(Number(newData[0]["co2"]));
+        })
+    }
+   
+    useEffect(()=>{
+        fetchPost();
+    }, [])
 
     return (
       <Link style={{textDecoration: 'none'}} to={"/airQuality"}>
@@ -25,7 +44,7 @@ import './AirQualityModule.css';
           </div>
           <div className="module-text">
           <Typography align='center' sx={{fontSize: 36, fontFamily: 'Poppins', color: '#1B2132'}}>
-              Current Room Air Quality: 
+              Current Room Air Quality (CO2 in PPM): 
             </Typography>
           </div>
         </CardContent>
@@ -38,8 +57,8 @@ import './AirQualityModule.css';
         >
             <div>
             <Typography align='center' gutterBottom="true" sx={{fontSize: 72, fontFamily: 'Poppins', color: '#FFFFFF', position: 'relative', transform: 'translate(0%, 100%)'}}>
-            50
-          </Typography>
+              {`${JSON.stringify(co2)}`}
+            </Typography>
           </div>
           </CardMedia>
         </div>
