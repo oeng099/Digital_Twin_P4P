@@ -1,21 +1,20 @@
 import fetch from "node-fetch";
-import * as dotenv from "dotenv"
-dotenv.config()
-const apiKey = process.env.IE_ROOM
+
+const apiKey = process.env.REACT_APP_IE_ROOM
 
 async function getAllDevice(){
   fetch("https://home.sensibo.com/api/v2/users/me/pods?fields=*&apiKey="+apiKey).then(res => res.text()).then((res) => JSON.parse(res)).then(res =>console.log(res["result"]))
 }
 
 async function getSpecificDevice(deviceUID){
-    const res = await fetch("https://home.sensibo.com/api/v2/pods/"+deviceUID+"?fields=*&apiKey="+apiKey)
+    const res = await fetch("https://home.sensibo.com/api/v2/pods/"+deviceUID+"?fields=*&apiKey="+ apiKey)
     const strData = await res.text()
     const dataObj = JSON.parse(strData)["result"]
 
-    // console.log("Current AC State")
-    // console.log(dataObj["acState"])
-    // console.log("Measurements")
-    // console.log(dataObj["measurements"])
+     console.log("Current AC State")
+     console.log(dataObj["acState"])
+     console.log("Measurements")
+     console.log(dataObj["measurements"])
     return dataObj
 }
 

@@ -30,7 +30,6 @@
     "firebase-admin": "^11.10.1",
     "fs": "^0.0.1-security",
     "install": "^0.13.0",
-    "mipacket": "^1.0.1",
     "mqtt": "^5.0.2",
     "node-fetch": "^2.6.12",
     "npm": "^9.8.0",
