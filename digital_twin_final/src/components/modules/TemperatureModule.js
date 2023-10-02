@@ -26,7 +26,9 @@ import firestore from "../firebase/firebase";
       "&:hover": { transform: "scale3d(1.02, 1.02, 1)" },
     }))
 
-    const [temperature, setTemperature] = useState([]);
+
+  const [temperature, setTemperature] = useState([]);
+  var currentTemp = null;
 
   const fetchPost = async () => {
 
@@ -34,19 +36,13 @@ import firestore from "../firebase/firebase";
       .then((querySnapshot)=>{
         const newData = querySnapshot.docs
           .map((doc) => ({...doc.data(), id:doc.id}));
-          setTemperature(newData);
-          console.log(temperature,newData);
+          setTemperature(newData[0]["temperature"]);
       })
   }
- 
-  useEffect(()=>{
-      fetchPost();
-  }, [])
 
-  console.log(temperature[0]["temperature"]);
-  const currentTemp = temperature[0]["temperature"];
-  const displayTemp = `${currentTemp}°C`
-
+  useEffect(() => {
+    fetchPost();
+  }, []); // Or [] if effect doesn't need props or state
 
     return (
       <Link style={{textDecoration: 'none'}} to={"/temperature"}>
@@ -72,7 +68,7 @@ import firestore from "../firebase/firebase";
         >
           <div>
             <Typography align='center' gutterBottom="true" sx={{fontSize: 72, fontFamily: 'Poppins', color: '#FFFFFF', position: 'relative', transform: 'translate(0%, 100%)'}}>
-              {displayTemp}
+              {`${JSON.stringify(temperature)}°C`}
           </Typography>
           </div>
           </CardMedia>
