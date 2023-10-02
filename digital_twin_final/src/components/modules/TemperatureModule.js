@@ -43,7 +43,9 @@ import firestore from "../firebase/firebase";
       fetchPost();
   }, [])
 
-  console.log(temperature);
+  console.log(temperature[0]["temperature"]);
+  const currentTemp = temperature[0]["temperature"];
+  const displayTemp = `${currentTemp}°C`
 
 
     return (
@@ -70,7 +72,7 @@ import firestore from "../firebase/firebase";
         >
           <div>
             <Typography align='center' gutterBottom="true" sx={{fontSize: 72, fontFamily: 'Poppins', color: '#FFFFFF', position: 'relative', transform: 'translate(0%, 100%)'}}>
-              24
+              {displayTemp}
           </Typography>
           </div>
           </CardMedia>
