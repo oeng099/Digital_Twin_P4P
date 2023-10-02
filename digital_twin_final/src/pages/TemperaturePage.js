@@ -1,17 +1,32 @@
 import "./TemperaturePage.css";
 import Display from "../components/navigation/Display";
-//import {db} from "../components/firebase/admin";
 import { useEffect, useState } from "react";
+import { collection, getDocs } from "firebase/firestore";
+import firestore from "../components/firebase/firebase";
 
 export default function TemperaturePage(){
 
-const [temperatures, setTemperatures] = useState([]);
+      const [temperature, setTemperature] = useState([]);
+
+      const fetchPost = async () => {
+    
+          await getDocs(collection(firestore,"temperature"))
+          .then((querySnapshot)=>{
+            const newData = querySnapshot.docs
+              .map((doc) => ({...doc.data(), id:doc.id}));
+              setTemperature(newData[0]["temperature"]);
+          })
+      }
+    
+      useEffect(() => {
+        fetchPost();
+      }, []); // Or [] if effect doesn't need props or state
 
 
       return(
             <div className="temp-page-background">
                   <h1 className="temp-page-title">Temperature</h1>
-                  <Display modulePage="Temperature" moduleMeasurement="24°C" targetMeasurement="23°C" moduleAttribute="°C"/>
+                  <Display modulePage="Temperature" moduleMeasurement={`${temperature}°C`} targetMeasurement="23°C" moduleAttribute="°C"/>
             </div>
       )
 }
