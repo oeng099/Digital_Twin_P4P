@@ -1,9 +1,8 @@
-import * as tapo from "./tapo.js"
 import * as aQ from "./airQuality.js"
 import * as sensibo from "./sensibo.js"
-import {db} from "./firebase/admin.js"
-import { Timestamp } from "@google-cloud/firestore"
-
+import firestore from "./firebase/firebase.js"
+//import { Timestamp } from "@google-cloud/firestore"
+//import { addDoc } from "firebase/firestore"
 
 async function start(){
 
@@ -66,7 +65,7 @@ async function regulateTemp(){
     }
 
 async function saveToCo2(){
-    const co2Ref = db.collection("co2");
+    const co2Ref = firestore.collection("co2");
     const co2ReadingList = await aQ.listCO2Reading()
     const co2Reading = co2ReadingList[co2ReadingList.length-1]
     const newDate = new Date()
@@ -75,7 +74,7 @@ async function saveToCo2(){
         
             let Co2 = {
                 co2: co2Reading,
-                created: Timestamp.now(),
+                //created: firestore.TIMESTAMP.now(),
             }
             co2Ref.doc(newDate.toString()).set(Co2)
                 .then((_docRef) => {
@@ -90,7 +89,7 @@ async function saveToCo2(){
 }
 
 async function saveToHumid(){
-    const humidRef = db.collection("humidity");
+    const humidRef = firestore.collection("humidity");
     const sensiboStats = await sensibo.getSpecificDevice("XAY6jwyi")
     // console.log(sensiboStats)
     const newDate = new Date()
@@ -112,7 +111,7 @@ async function saveToHumid(){
     }
 }
 async function saveToTemp(){
-    const tempRef = db.collection("temperature");
+    const tempRef = firestore.collection("temperature");
     const sensiboStats = await sensibo.getSpecificDevice("XAY6jwyi")
     const newDate = new Date()
     try {
