@@ -9,6 +9,12 @@ import HumidityPage from './pages/HumidityPage';
 import AirQualityPage from './pages/AirQualityPage';
 import handleSubmit from './handles/handlesubmit';
 import { useRef } from 'react';
+import {start} from "./components/logic.js"
+
+if (typeof window !== 'undefined') { // Check if we're running in the browser.
+  start()
+}
+
 
 function App() {
 

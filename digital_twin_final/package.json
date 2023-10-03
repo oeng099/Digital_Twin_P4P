@@ -5,6 +5,7 @@
   "dependencies": {
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
+    "@google-cloud/firestore": "^6.8.0",
     "@mui/icons-material": "^5.14.9",
     "@mui/material": "^5.14.10",
     "@testing-library/jest-dom": "^5.17.0",
@@ -13,6 +14,11 @@
     "env-cmd": "^10.1.0",
     "firebase": "^10.4.0",
     "firebase-admin": "^11.11.0",
+<<<<<<< HEAD
+=======
+    "firestore": "^1.1.6",
+    "node": "^20.6.0",
+>>>>>>> fc07a23c43cda5de85a8d77a40544cae59a727c7
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.16.0",

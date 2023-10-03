@@ -1,7 +1,6 @@
 import fetch from "node-fetch";
-import * as dotenv from "dotenv"
-dotenv.config()
-const apiKey = process.env.IE_ROOM
+
+const apiKey = process.env.REACT_APP_IE_ROOM
 
 async function getAllDevice(){
   fetch("https://home.sensibo.com/api/v2/users/me/pods?fields=*&apiKey="+apiKey).then(res => res.text()).then((res) => JSON.parse(res)).then(res =>console.log(res["result"]))
