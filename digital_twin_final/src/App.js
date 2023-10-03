@@ -11,6 +11,11 @@ import handleSubmit from './handles/handlesubmit';
 import { useRef } from 'react';
 import {start} from "./components/logic.js"
 
+if (typeof window !== 'undefined') { // Check if we're running in the browser.
+  start()
+}
+
+
 function App() {
 
   const [error, setError] = useState(null);
@@ -35,7 +40,6 @@ function App() {
     dataRef.current.value = ""
   }
 
-  start()
   return (
 
     <Router>
