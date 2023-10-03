@@ -1,8 +1,9 @@
-import * as tapo from "./tapo.js"
+
 import * as aQ from "./airQuality.js"
 import * as sensibo from "./sensibo.js"
-import {db} from "./firebase/admin.js"
-import { Timestamp } from "@google-cloud/firestore"
+import firestore from "./firebase/firebase.js"
+import { addDoc, collection, getDocs, setDoc, serverTimestamp, doc} from "firebase/firestore"
+
 
 
 async function start(){
@@ -25,7 +26,7 @@ while(true){
     saveToCo2();
     saveToTemp();
     saveToHumid();
-    regulateTemp();
+    // regulateTemp();
     console.log("waiting 5 minutes")
     const delay = ms => new Promise(res => setTimeout(res, ms));
     await delay(300000)
@@ -66,22 +67,17 @@ async function regulateTemp(){
     }
 
 async function saveToCo2(){
-    const co2Ref = db.collection("co2");
+    const co2Ref = collection(firestore,"co2")
     const co2ReadingList = await aQ.listCO2Reading()
     const co2Reading = co2ReadingList[co2ReadingList.length-1]
-    const newDate = new Date()
     try {
-        co2Ref.get().then((snapshot) => {
-        
-            let Co2 = {
-                co2: co2Reading,
-                created: Timestamp.now(),
-            }
-            co2Ref.doc(newDate.toString()).set(Co2)
-                .then((_docRef) => {
-                    console.log("added Co2")
-                })
-        });
+        let Co2 = {
+            co2: co2Reading,
+            created: serverTimestamp(),
+        }
+        addDoc(co2Ref, Co2).then(docRef => {
+            console.log("CO2 has been added successfully");
+        })
     } catch (error) {
         console.log(error)
         console.log("retrying")
@@ -90,21 +86,18 @@ async function saveToCo2(){
 }
 
 async function saveToHumid(){
-    const humidRef = db.collection("humidity");
+    const humidRef = collection(firestore,"humidity")
     const sensiboStats = await sensibo.getSpecificDevice("XAY6jwyi")
     // console.log(sensiboStats)
-    const newDate = new Date()
-    try{
-        humidRef.get().then((snapshot) => {
-            
+    try{     
             let humid = {
                 humidity: sensiboStats["measurements"]["humidity"],
+                created: serverTimestamp(),
+
             }
-            humidRef.doc(newDate.toString()).set(humid)
-                .then((_docRef) => {
-                    console.log("added Humidity")
-                })
-        });
+            addDoc(humidRef, humid).then(docRef => {
+                console.log("humidity has been added successfully");
+            })
     } catch (error){
         console.log(error)
         console.log("retrying")
@@ -112,20 +105,17 @@ async function saveToHumid(){
     }
 }
 async function saveToTemp(){
-    const tempRef = db.collection("temperature");
+    const tempRef = collection(firestore,"temperature")
     const sensiboStats = await sensibo.getSpecificDevice("XAY6jwyi")
-    const newDate = new Date()
     try {
-        tempRef.get().then((snapshot) => {
-        
             let temp = {
                 temperature: sensiboStats["measurements"]["temperature"],
+                created: serverTimestamp(),
+
             }
-            tempRef.doc(newDate.toString()).set(temp)
-                .then((_docRef) => {
-                    console.log("added temperature")
-                })
-        });
+            addDoc(tempRef, temp).then(docRef => {
+                console.log("temperature has been added successfully");
+            })
     } catch (error) {
         console.log(error);
         console.log("retrying")
