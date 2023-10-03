@@ -1,7 +1,7 @@
 import "./HumidityPage.css";
 import Display from '../components/navigation/Display'
 import { useState, useEffect } from 'react';
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, orderBy, query } from "firebase/firestore";
 import firestore from "../components/firebase/firebase";
 
 export default function HumidityPage(){
@@ -10,7 +10,7 @@ export default function HumidityPage(){
 
       const fetchPost = async () => {
     
-          await getDocs(collection(firestore,"humidity"))
+          await getDocs(/*query*/(collection(firestore,"humidity")/*,orderBy("created","desc")*/))
           .then((querySnapshot)=>{
             const newData = querySnapshot.docs
               .map((doc) => ({...doc.data(), id:doc.id}));
