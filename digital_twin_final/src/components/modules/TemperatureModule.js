@@ -9,7 +9,7 @@ import { styled } from '@mui/material/styles';
 import './TemperatureModule.css';
 import * as sensibo from "../sensibo"
 import { useState, useEffect } from 'react';
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, orderBy, query } from "firebase/firestore";
 import firestore from "../firebase/firebase";
 
   /*async function getTemperature(){
@@ -28,11 +28,10 @@ import firestore from "../firebase/firebase";
 
 
   const [temperature, setTemperature] = useState([]);
-  var currentTemp = null;
 
   const fetchPost = async () => {
 
-      await getDocs(collection(firestore,"temperature"))
+      await getDocs(/*query*/(collection(firestore,"temperature")/*,orderBy("temperature","desc")*/))
       .then((querySnapshot)=>{
         const newData = querySnapshot.docs
           .map((doc) => ({...doc.data(), id:doc.id}));
