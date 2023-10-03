@@ -9,6 +9,7 @@ import HumidityPage from './pages/HumidityPage';
 import AirQualityPage from './pages/AirQualityPage';
 import handleSubmit from './handles/handlesubmit';
 import { useRef } from 'react';
+import {start} from "./components/logic.js"
 
 function App() {
 
@@ -34,6 +35,7 @@ function App() {
     dataRef.current.value = ""
   }
 
+  start()
   return (
 
     <Router>
