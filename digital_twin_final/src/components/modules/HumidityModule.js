@@ -21,7 +21,7 @@ import firestore from "../firebase/firebase";
 
     const fetchPost = async () => {
   
-        await getDocs(/*query*/(collection(firestore,"humidity")/*,orderBy("created","desc")*/))
+        await getDocs(query(collection(firestore,"humidity"),orderBy("created","desc")))
         .then((querySnapshot)=>{
           const newData = querySnapshot.docs
             .map((doc) => ({...doc.data(), id:doc.id}));
