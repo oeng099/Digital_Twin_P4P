@@ -1,7 +1,7 @@
 import "./AirQualityPage.css";
 import Display from '../components/navigation/Display';
 import { useState, useEffect } from 'react';
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, orderBy, query } from "firebase/firestore";
 import firestore from "../components/firebase/firebase";
 
 export default function AirQualityPage(){
@@ -10,7 +10,7 @@ const [co2, setco2] = useState([]);
 
 const fetchPost = async () => {
   
-      await getDocs(collection(firestore,"co2"))
+      await getDocs(query(collection(firestore,"co2"),orderBy("created","desc")))
         .then((querySnapshot)=>{
           const newData = querySnapshot.docs
             .map((doc) => ({...doc.data(), id:doc.id}));

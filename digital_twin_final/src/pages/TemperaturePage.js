@@ -1,7 +1,7 @@
 import "./TemperaturePage.css";
 import Display from "../components/navigation/Display";
 import { useEffect, useState } from "react";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, orderBy, query } from "firebase/firestore";
 import firestore from "../components/firebase/firebase";
 
 export default function TemperaturePage(){
@@ -10,7 +10,7 @@ export default function TemperaturePage(){
 
       const fetchPost = async () => {
     
-          await getDocs(collection(firestore,"temperature"))
+          await getDocs(query(collection(firestore,"temperature"),orderBy("created","desc")))
           .then((querySnapshot)=>{
             const newData = querySnapshot.docs
               .map((doc) => ({...doc.data(), id:doc.id}));

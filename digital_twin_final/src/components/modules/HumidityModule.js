@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
 import './HumidityModule.css';
 import { useState, useEffect } from 'react';
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, orderBy, query } from "firebase/firestore";
 import firestore from "../firebase/firebase";
 
   export default function HumidityModule() {
@@ -21,7 +21,7 @@ import firestore from "../firebase/firebase";
 
     const fetchPost = async () => {
   
-        await getDocs(collection(firestore,"humidity"))
+        await getDocs(query(collection(firestore,"humidity"),orderBy("created","desc")))
         .then((querySnapshot)=>{
           const newData = querySnapshot.docs
             .map((doc) => ({...doc.data(), id:doc.id}));
