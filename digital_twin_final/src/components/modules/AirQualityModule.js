@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
 import './AirQualityModule.css';
 import { useState, useEffect } from 'react';
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, orderBy, query } from "firebase/firestore";
 import firestore from "../firebase/firebase";
 
   export default function AirQualityModule() {
@@ -21,10 +21,11 @@ import firestore from "../firebase/firebase";
 
     const fetchPost = async () => {
   
-        await getDocs(collection(firestore,"co2"))
+        await getDocs(query(collection(firestore,"co2"),orderBy('created','desc')))
         .then((querySnapshot)=>{
           const newData = querySnapshot.docs
             .map((doc) => ({...doc.data(), id:doc.id}));
+            console.log(newData);
             setco2(Number(newData[0]["co2"]));
         })
     }

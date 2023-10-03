@@ -1,9 +1,7 @@
-
 import * as aQ from "./airQuality.js"
 import * as sensibo from "./sensibo.js"
 import firestore from "./firebase/firebase.js"
 import { addDoc, collection, getDocs, setDoc, serverTimestamp, doc} from "firebase/firestore"
-
 
 
 async function start(){
