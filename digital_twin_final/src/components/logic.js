@@ -1,8 +1,7 @@
 import * as aQ from "./airQuality.js"
 import * as sensibo from "./sensibo.js"
 import firestore from "./firebase/firebase.js"
-import { addDoc, collection, getDocs, setDoc, serverTimestamp, doc} from "firebase/firestore"
-
+import { addDoc, collection, serverTimestamp} from "firebase/firestore"
 
 async function start(){
 
@@ -21,10 +20,14 @@ while(true){
         console.log("The AC is currently off");
     }
     console.log("*****")
-    saveToCo2();
-    saveToTemp();
-    saveToHumid();
+    // saveToCo2();
+    // saveToTemp();
+    // saveToHumid();
     // regulateTemp();
+    
+    // console.log("fetching")
+    // const backendRes = await fetch('http://localhost:3500/ble');
+    // console.log(backendRes)
     console.log("waiting 5 minutes")
     const delay = ms => new Promise(res => setTimeout(res, ms));
     await delay(300000)
