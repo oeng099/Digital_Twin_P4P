@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import * as sensibo from "./components/sensibo.js"
 import { useEffect, useState } from 'react';
@@ -7,8 +6,6 @@ import HomePage from './pages/HomePage.js';
 import TemperaturePage from './pages/TemperaturePage.js';
 import HumidityPage from './pages/HumidityPage.js';
 import AirQualityPage from './pages/AirQualityPage.js';
-import handleSubmit from './handles/handlesubmit.js';
-import { useRef } from 'react';
 import {start} from "./components/logic.js"
 
 if (typeof window !== 'undefined') { // Check if we're running in the browser.

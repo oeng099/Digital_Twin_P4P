@@ -7,16 +7,12 @@ import CardMedia from '@mui/material/CardMedia/index.js';
 import { Link } from 'react-router-dom';
 import { styled } from '@mui/material/styles/index.js';
 import './TemperatureModule.css';
-import * as sensibo from "../sensibo.js"
+
 import { useState, useEffect } from 'react';
 import { collection, getDocs, orderBy, query, limit } from "firebase/firestore";
 import firestore from "../firebase/firebase.js";
 
-  /*async function getTemperature(){
-    const temperatureReading = await sensibo.getSpecificDevice("XAY6jwyi");
-    console.log("This is the temparature reading: " + temperatureReading["measurements"]["temperature"]);
-    return temperatureReading["measurements"]["temperature"];
-  }*/
+import tempImage from "../images/temperature_display.png";
 
   export default function TemperatureModule() {
 
@@ -64,7 +60,7 @@ import firestore from "../firebase/firebase.js";
           <div className="temp-display-back">
           <CardMedia
           className={"temperature-display-background"}
-          image={require('..//images/temperature_display.png')}
+          image={tempImage}
           title="Temperature Display"
           sx={{height: 330, width: 320, objectFit: "fill", marginLeft: 6, marginTop: 3, position: 'relative'}}
         >

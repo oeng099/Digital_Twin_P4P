@@ -10,6 +10,7 @@ import './HumidityModule.css';
 import { useState, useEffect } from 'react';
 import { collection, getDocs, orderBy, query, limit } from "firebase/firestore";
 import firestore from "../firebase/firebase.js";
+import humidityImage from "../images/humidity_display.png"
 
   export default function HumidityModule() {
 
@@ -56,7 +57,7 @@ import firestore from "../firebase/firebase.js";
         <div className="display-container">
           <CardMedia
           className={"humidity-display-background"}
-          image={require('..//images/humidity_display.png')}
+          image={humidityImage}
           title="Humidity Display"
           sx={{height: 330, width: 320, objectFit: "fill", marginLeft: 6, marginTop: 3}}
         >
