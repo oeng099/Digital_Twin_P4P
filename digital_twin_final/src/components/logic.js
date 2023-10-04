@@ -16,13 +16,14 @@ while(true){
     if(obj["acState"]["on"] == true){
         console.log("The AC is currently on");
     }
-    if(obj["acState"]["on"] == false){
+    else {
         console.log("The AC is currently off");
     }
+    
     console.log("*****")
-    // saveToCo2();
-    // saveToTemp();
-    // saveToHumid();
+    saveToCo2();
+    saveToTemp();
+    saveToHumid();
     // regulateTemp();
     
     // console.log("fetching")
@@ -30,7 +31,7 @@ while(true){
     // console.log(backendRes)
     console.log("waiting 5 minutes")
     const delay = ms => new Promise(res => setTimeout(res, ms));
-    await delay(300000)
+    await delay(60000)
 }
 }
 

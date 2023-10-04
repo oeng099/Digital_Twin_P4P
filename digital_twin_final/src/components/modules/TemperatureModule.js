@@ -7,16 +7,9 @@ import CardMedia from '@mui/material/CardMedia';
 import { Link } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
 import './TemperatureModule.css';
-import * as sensibo from "../sensibo"
 import { useState, useEffect } from 'react';
 import { collection, getDocs, orderBy, query, limit } from "firebase/firestore";
 import firestore from "../firebase/firebase";
-
-  /*async function getTemperature(){
-    const temperatureReading = await sensibo.getSpecificDevice("XAY6jwyi");
-    console.log("This is the temparature reading: " + temperatureReading["measurements"]["temperature"]);
-    return temperatureReading["measurements"]["temperature"];
-  }*/
 
   export default function TemperatureModule() {
 

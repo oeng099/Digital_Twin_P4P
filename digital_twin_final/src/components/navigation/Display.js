@@ -1,8 +1,8 @@
 import "./Display.css";
 import BackButton from "./BackButton";
 import { useNavigate } from 'react-router-dom';
-import ChangeSection from "./ChangeSection";
 import { useState } from "react";
+import * as sensibo from "../sensibo";
 
 
 export default function Display({modulePage, moduleMeasurement, targetMeasurement, moduleAttribute}){
@@ -16,8 +16,13 @@ export default function Display({modulePage, moduleMeasurement, targetMeasuremen
       const [target, setTarget] = useState(targetMeasurement);
       const [newTarget, setNewTarget] = useState(targetMeasurement);
 
-      const handleChange = event => setNewTarget(event.target.value);
-      const handleSubmit = () => setTarget(newTarget + moduleAttribute);
+      const handleChange = event => setNewTarget(event.target.value.replace(/\D/g, ''));
+      const handleSubmit = async() => {
+            if(!(newTarget == targetMeasurement || newTarget == null)){
+                  setTarget(newTarget + moduleAttribute);
+                  await sensibo.setTargetTemperature("XAY6jwyi",parseInt(newTarget));
+            }
+      }
 
       return(
             <div className="nav-display-background">
@@ -38,7 +43,7 @@ export default function Display({modulePage, moduleMeasurement, targetMeasuremen
                   <div className="change-section-text">
                         Change Target {modulePage} :
                   <form name="tempForm" className="change-form" action='' method='GET'>
-                        <input type="text" placeholder={modulePage} id='temperatureInput' name='TemperatureInput' defaultValue={''} onChange={handleChange}/><br></br>
+                        <input type="text" placeholder={modulePage} id={`${modulePage}Input`} name={`${modulePage}Input`} defaultValue={''} onChange={handleChange}/><br></br>
                         <input type="button" value="Submit" name='SubmitButton' onClick={handleSubmit}></input>
                   </form>
                   </div>
