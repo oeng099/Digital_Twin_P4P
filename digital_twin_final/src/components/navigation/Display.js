@@ -15,7 +15,7 @@ export default function Display({modulePage, moduleMeasurement, targetMeasuremen
       const [target, setTarget] = useState(targetMeasurement);
       const [newTarget, setNewTarget] = useState(targetMeasurement);
 
-      const handleChange = event => setNewTarget(event.target.value);
+      const handleChange = event => setNewTarget(event.target.value.replace(/\D/g, ''));
       const handleSubmit = () => {
             if(!(newTarget == targetMeasurement || newTarget == null)){
                   setTarget(newTarget + moduleAttribute);
