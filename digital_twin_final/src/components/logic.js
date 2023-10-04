@@ -17,9 +17,10 @@ while(true){
     if(obj["acState"]["on"] == true){
         console.log("The AC is currently on");
     }
-    if(obj["acState"]["on"] == false){
+    else {
         console.log("The AC is currently off");
     }
+    
     console.log("*****")
     saveToCo2();
     saveToTemp();
