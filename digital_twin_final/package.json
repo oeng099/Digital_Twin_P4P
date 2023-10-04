@@ -25,7 +25,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "serverStart": "node src/components/BACKEND/processBLE.js",
+    "serverStart": "cd src/components/BACKEND/BLE && node ./processBLE.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
