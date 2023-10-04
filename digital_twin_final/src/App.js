@@ -30,15 +30,7 @@ function App() {
       }
     }
     fetchData();
-  }, []); // Or [] if effect doesn't need props or state
-
-  const dataRef = useRef()
- 
-  const submithandler = (e) => {
-    e.preventDefault()
-    handleSubmit(dataRef.current.value)
-    dataRef.current.value = ""
-  }
+  }, []); // Or [] if effect doesn't need props or stats
 
   return (
 

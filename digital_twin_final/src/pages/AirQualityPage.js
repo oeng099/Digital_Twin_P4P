@@ -18,9 +18,14 @@ const fetchPost = async () => {
         })
     }
    
-useEffect(()=>{
-      fetchPost();
-}, [])
+    useEffect(() => {
+
+      const interval = setInterval(() => {
+        fetchPost();
+      }, 10000);
+  
+      return () => clearInterval(interval);
+    }, []); // Or [] if effect doesn't need props or state
 
 return(
       <div className="aq-page-background">

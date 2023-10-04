@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
 import './AirQualityModule.css';
 import { useState, useEffect } from 'react';
-import { collection, getDocs, orderBy, query } from "firebase/firestore";
+import { collection, getDocs, orderBy, query, limit } from "firebase/firestore";
 import firestore from "../firebase/firebase";
 
   export default function AirQualityModule() {
@@ -21,18 +21,24 @@ import firestore from "../firebase/firebase";
 
     const fetchPost = async () => {
   
-        await getDocs(query(collection(firestore,"co2"),orderBy('created','desc')))
+        await getDocs(query(collection(firestore,"co2"),orderBy('created','desc'),limit(1)))
         .then((querySnapshot)=>{
           const newData = querySnapshot.docs
             .map((doc) => ({...doc.data(), id:doc.id}));
-            console.log(newData);
             setco2(Number(newData[0]["co2"]));
+            console.log(newData)
         })
     }
-   
-    useEffect(()=>{
+
+    useEffect(() => {
+
+      //Component will requery the database every 10 seconds
+      const interval = setInterval(() => {
         fetchPost();
-    }, [])
+      }, 10000);
+  
+      return () => clearInterval(interval);
+    }, []); // Or [] if effect doesn't need props or state
 
     return (
       <Link style={{textDecoration: 'none'}} to={"/airQuality"}>
