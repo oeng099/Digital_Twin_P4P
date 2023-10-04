@@ -1,7 +1,7 @@
 import './HomePage.css';
-import TemperatureModule from '../components/modules/TemperatureModule';
-import HumidityModule from '../components/modules/HumidityModule';
-import AirQualityModule from '../components/modules/AirQualityModule';
+import TemperatureModule from '../components/modules/TemperatureModule.js';
+import HumidityModule from '../components/modules/HumidityModule.js';
+import AirQualityModule from '../components/modules/AirQualityModule.js';
 import { useRef, useState, useEffect } from 'react';
 //import { db } from "../components/firebase/admin";
 

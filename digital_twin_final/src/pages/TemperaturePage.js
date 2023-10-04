@@ -1,8 +1,8 @@
 import "./TemperaturePage.css";
-import Display from "../components/navigation/Display";
+import Display from "../components/navigation/Display.js";
 import { useEffect, useState } from "react";
 import { collection, getDocs, orderBy, query } from "firebase/firestore";
-import firestore from "../components/firebase/firebase";
+import firestore from "../components/firebase/firebase.js";
 
 export default function TemperaturePage(){
 

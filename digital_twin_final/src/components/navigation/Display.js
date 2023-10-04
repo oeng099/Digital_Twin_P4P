@@ -1,7 +1,7 @@
 import "./Display.css";
-import BackButton from "./BackButton";
+import BackButton from "./BackButton.js";
 import { useNavigate } from 'react-router-dom';
-import ChangeSection from "./ChangeSection";
+import ChangeSection from "./ChangeSection.js";
 import { useState } from "react";
 
 

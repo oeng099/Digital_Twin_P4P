@@ -1,16 +1,16 @@
 import * as React from 'react';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import Typography from '@mui/material/Typography';
-import CardMedia from '@mui/material/CardMedia';
+import Card from '@mui/material/Card/index.js';
+import CardActions from '@mui/material/CardActions/index.js';
+import CardContent from '@mui/material/CardContent/index.js';
+import Typography from '@mui/material/Typography/index.js';
+import CardMedia from '@mui/material/CardMedia/index.js';
 import { Link } from 'react-router-dom';
-import { styled } from '@mui/material/styles';
+import { styled } from '@mui/material/styles/index.js';
 import './TemperatureModule.css';
-import * as sensibo from "../sensibo"
+import * as sensibo from "../sensibo.js"
 import { useState, useEffect } from 'react';
 import { collection, getDocs, orderBy, query, limit } from "firebase/firestore";
-import firestore from "../firebase/firebase";
+import firestore from "../firebase/firebase.js";
 
   /*async function getTemperature(){
     const temperatureReading = await sensibo.getSpecificDevice("XAY6jwyi");

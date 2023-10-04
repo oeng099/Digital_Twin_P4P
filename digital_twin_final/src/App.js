@@ -1,13 +1,13 @@
 import logo from './logo.svg';
 import './App.css';
-import * as sensibo from "./components/sensibo"
+import * as sensibo from "./components/sensibo.js"
 import { useEffect, useState } from 'react';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
-import HomePage from './pages/HomePage';
-import TemperaturePage from './pages/TemperaturePage';
-import HumidityPage from './pages/HumidityPage';
-import AirQualityPage from './pages/AirQualityPage';
-import handleSubmit from './handles/handlesubmit';
+import HomePage from './pages/HomePage.js';
+import TemperaturePage from './pages/TemperaturePage.js';
+import HumidityPage from './pages/HumidityPage.js';
+import AirQualityPage from './pages/AirQualityPage.js';
+import handleSubmit from './handles/handlesubmit.js';
 import { useRef } from 'react';
 import {start} from "./components/logic.js"
 
