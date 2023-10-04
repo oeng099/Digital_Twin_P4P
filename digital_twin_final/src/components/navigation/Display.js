@@ -2,6 +2,7 @@ import "./Display.css";
 import BackButton from "./BackButton";
 import { useNavigate } from 'react-router-dom';
 import { useState } from "react";
+import * as sensibo from "../sensibo";
 
 
 export default function Display({modulePage, moduleMeasurement, targetMeasurement, moduleAttribute}){
@@ -16,9 +17,10 @@ export default function Display({modulePage, moduleMeasurement, targetMeasuremen
       const [newTarget, setNewTarget] = useState(targetMeasurement);
 
       const handleChange = event => setNewTarget(event.target.value.replace(/\D/g, ''));
-      const handleSubmit = () => {
+      const handleSubmit = async() => {
             if(!(newTarget == targetMeasurement || newTarget == null)){
                   setTarget(newTarget + moduleAttribute);
+                  await sensibo.setTargetTemperature("XAY6jwyi",parseInt(newTarget));
             }
       }
 

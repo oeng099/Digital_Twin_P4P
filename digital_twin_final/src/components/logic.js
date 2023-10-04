@@ -25,10 +25,11 @@ while(true){
     saveToCo2();
     saveToTemp();
     saveToHumid();
+    //sensibo.setTargetTemperature("XAY6jwyi",26);
     // regulateTemp();
     console.log("waiting 5 minutes")
     const delay = ms => new Promise(res => setTimeout(res, ms));
-    await delay(300000)
+    await delay(60000)
 }
 }
 
