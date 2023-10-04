@@ -10,6 +10,7 @@ import './AirQualityModule.css';
 import { useState, useEffect } from 'react';
 import { collection, getDocs, orderBy, query, limit } from "firebase/firestore";
 import firestore from "../firebase/firebase";
+import airQualityImage from "../images/air_quality_display.png";
 
   export default function AirQualityModule() {
 
@@ -58,7 +59,7 @@ import firestore from "../firebase/firebase";
         <div className="display-container">
           <CardMedia
           className={"air-quality-display-background"}
-          image={require('..//images/air_quality_display.png')}
+          image={airQualityImage}
           title="Air QualityDisplay"
           sx={{height: 330, width: 320, objectFit: "fill", marginLeft: 6, marginTop: 3}}
         >
