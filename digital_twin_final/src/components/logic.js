@@ -31,7 +31,7 @@ while(true){
     // console.log(backendRes)
     console.log("waiting 5 minutes")
     const delay = ms => new Promise(res => setTimeout(res, ms));
-    await delay(60000)
+    await delay(300000)
 }
 }
 
