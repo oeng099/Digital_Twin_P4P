@@ -17,10 +17,15 @@ export default function TemperaturePage(){
               setTemperature(newData[0]["temperature"]);
           })
       }
-    
+
       useEffect(() => {
-        fetchPost();
-      }, []); // Or [] if effect doesn't need props or state
+
+            const interval = setInterval(() => {
+              fetchPost();
+            }, 10000);
+        
+            return () => clearInterval(interval);
+          }, []); // Or [] if effect doesn't need props or state
 
 
       return(

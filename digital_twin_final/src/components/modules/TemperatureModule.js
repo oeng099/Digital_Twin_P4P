@@ -9,7 +9,7 @@ import { styled } from '@mui/material/styles';
 import './TemperatureModule.css';
 import * as sensibo from "../sensibo"
 import { useState, useEffect } from 'react';
-import { collection, getDocs, orderBy, query } from "firebase/firestore";
+import { collection, getDocs, orderBy, query, limit } from "firebase/firestore";
 import firestore from "../firebase/firebase";
 
   /*async function getTemperature(){
@@ -20,8 +20,6 @@ import firestore from "../firebase/firebase";
 
   export default function TemperatureModule() {
 
-    //const temperature = await getTemperature().then(console.log("test2"));
-
     const StyledCard = styled(Card)(({ theme }) => ({
       "&:hover": { transform: "scale3d(1.02, 1.02, 1)" },
     }))
@@ -31,7 +29,7 @@ import firestore from "../firebase/firebase";
 
   const fetchPost = async () => {
 
-      await getDocs(query(collection(firestore,"temperature"),orderBy("created","desc")))
+      await getDocs(query(collection(firestore,"temperature"),orderBy("created","desc"),limit(1)))
       .then((querySnapshot)=>{
         const newData = querySnapshot.docs
           .map((doc) => ({...doc.data(), id:doc.id}));
@@ -40,7 +38,12 @@ import firestore from "../firebase/firebase";
   }
 
   useEffect(() => {
-    fetchPost();
+
+    const interval = setInterval(() => {
+      fetchPost();
+    }, 10000);
+
+    return () => clearInterval(interval);
   }, []); // Or [] if effect doesn't need props or state
 
     return (

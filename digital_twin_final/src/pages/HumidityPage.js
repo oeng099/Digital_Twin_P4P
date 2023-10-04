@@ -17,10 +17,15 @@ export default function HumidityPage(){
               setHumidity(newData[0]["humidity"]);
           })
       }
-     
-      useEffect(()=>{
-          fetchPost();
-      }, [])
+
+      useEffect(() => {
+
+            const interval = setInterval(() => {
+              fetchPost();
+            }, 10000);
+        
+            return () => clearInterval(interval);
+          }, []); // Or [] if effect doesn't need props or state
 
       return(
             <div className="hum-page-background">
