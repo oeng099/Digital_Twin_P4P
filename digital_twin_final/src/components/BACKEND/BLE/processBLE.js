@@ -1,10 +1,11 @@
 import {spawn} from "child_process"
-import firestore from "./firebase/firebase.js"
-import {addDoc, collection, serverTimestamp} from "firebase/firestore"
+import {db} from "../../firebase/admin.js"
+import {Timestamp} from "firebase-admin/firestore"
+import {addDoc, collection} from "firebase/firestore"
 //const app = express();
 const port = 3500;
 
-const mac = ["58:2D:34:38:8C:56"]
+const mac = ["58:2D:34:38:8C:56","58:2D:34:38:85:54","58:2D:34:38:88:6F"]
 //app.get('/', (req,res) => {
 	var dataToSend
 	const python = spawn ('python',['LYWSD03MMC.py','--atc']);
@@ -35,14 +36,16 @@ const mac = ["58:2D:34:38:8C:56"]
                     var tempVal = parseFloat(arrayEdited[1].split(": ")[1]);
                     var humidVal = parseFloat(arrayEdited[2].split(": ")[1]);
                     console.log(tempVal +"---"+ humidVal+ "---" + mac[i])
-                    const ref = collection(firestore,"users")
+					const ref = db.collection(mac[i])
+					const timestamp = Timestamp.fromDate(new Date(Date.now()));
                     try{
+						
                         let reading = {
-                            created: serverTimestamp(),
+                            created: timestamp,
                             temperature: tempVal,
                             humidity:  humidVal,
                         }
-                        addDoc(ref, reading).then(docRef =>{
+						ref.add(reading).then(docRef =>{
                             console.log("Added reading to "+mac[i])
                         })
                         break
