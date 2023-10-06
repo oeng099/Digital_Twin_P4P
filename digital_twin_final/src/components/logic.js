@@ -24,7 +24,7 @@ while(true){
     saveToCo2();
     saveToTemp();
     saveToHumid();
-    // regulateTemp();
+    regulateTemp();
     
     // console.log("fetching")
     // const backendRes = await fetch('http://localhost:3500/ble');
@@ -42,21 +42,17 @@ async function regulateTemp(){
     console.log("CurrentTemp: "+currentTemp+" | targetTemp: "+targetTemp)
     try {
         if(currentTemp > targetTemp){
-            if(sensiboStats["acState"]["mode"] == "heat"){
                 await sensibo.setMode("XAY6jwyi", "cool")
                 console.log("set mode to cool");
                 if(!sensiboStats["acState"]["on"]){
                     await sensibo.turnDeviceOn("XAY6jwyi")
-                }
             }
         }else if(currentTemp < targetTemp){
-            if(sensiboStats["acState"]["mode"] == "cool"){
                 await sensibo.setMode("XAY6jwyi", "heat")
                 console.log("set mode to heat")
                 if(!sensiboStats["acState"]["on"]){
                     await sensibo.turnDeviceOn("XAY6jwyi")
                 }
-            }
         } else{
             await sensibo.turnDeviceOff("XAY6jwyi")
         }
