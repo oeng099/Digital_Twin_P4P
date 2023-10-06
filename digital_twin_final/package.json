@@ -2,7 +2,7 @@
   "name": "digital_twin_final",
   "version": "0.1.0",
   "private": true,
-  "type":"module",
+  "type": "module",
   "dependencies": {
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
@@ -16,7 +16,8 @@
     "firebase": "^10.4.0",
     "firebase-admin": "^11.11.0",
     "firestore": "^1.1.6",
-    "node": "^20.6.0",
+    "mqtt": "^5.1.0",
+    "precompiled-mqtt": "^4.3.14-beta",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.16.0",
@@ -26,6 +27,7 @@
   "scripts": {
     "start": "react-scripts start",
     "serverStart": "cd src/components/BACKEND/BLE && node ./processBLE.js",
+    "energyStart": "cd src/components/BACKEND/mqtt && node ./mqtt.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
