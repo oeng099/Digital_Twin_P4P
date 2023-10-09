@@ -7,13 +7,13 @@ import TemperaturePage from './pages/TemperaturePage.js';
 import HumidityPage from './pages/HumidityPage.js';
 import AirQualityPage from './pages/AirQualityPage.js';
 import {start} from "./components/logic.js"
-import getHeatPumpEnergyData from "./components/mqtt.js";
+//import getHeatPumpEnergyData from "./components/mqtt.js";
 
 if (typeof window !== 'undefined') { // Check if we're running in the browser.
   start()
 }
 
-getHeatPumpEnergyData();
+//getHeatPumpEnergyData();
 
 function App() {
 

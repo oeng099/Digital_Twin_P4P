@@ -22,7 +22,7 @@ import humidityImage from "../images/humidity_display.png"
 
     const fetchPost = async () => {
   
-        await getDocs(query(collection(firestore,"humidity"),orderBy("created","desc"),limit(1)))
+        await getDocs(query(collection(firestore,"58:2D:34:38:85:54"),orderBy("created","desc"),limit(1)))
         .then((querySnapshot)=>{
           const newData = querySnapshot.docs
             .map((doc) => ({...doc.data(), id:doc.id}));

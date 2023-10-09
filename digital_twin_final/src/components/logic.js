@@ -11,7 +11,7 @@ while(true){
     console.log("--------")
     console.log("The current target temperature is: "+obj["acState"]["targetTemperature"]+" degrees Celsius")
     console.log("--------")
-
+    await sensibo.turnDeviceOff("XAY6jwyi")
     
     if(obj["acState"]["on"] == true){
         console.log("The AC is currently on");
@@ -24,7 +24,7 @@ while(true){
     saveToCo2();
     saveToTemp();
     saveToHumid();
-    regulateTemp();
+    //regulateTemp();
     
     // console.log("fetching")
     // const backendRes = await fetch('http://localhost:3500/ble');
