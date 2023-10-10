@@ -20,6 +20,8 @@ export default function Display({modulePage, moduleMeasurement, targetMeasuremen
             if(!(newTarget == targetMeasurement || newTarget == null)){
                   setTarget(newTarget + moduleAttribute);
                   await sensibo.setTargetTemperature("XAY6jwyi",parseInt(newTarget));
+                  sessionStorage.setItem("userInput",true);
+                  console.log(sessionStorage);
             }
       }
 

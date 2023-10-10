@@ -27,7 +27,6 @@ import airQualityImage from "../images/air_quality_display.png";
           const newData = querySnapshot.docs
             .map((doc) => ({...doc.data(), id:doc.id}));
             setco2(Number(newData[0]["co2"]));
-            console.log(newData)
         })
     }
 

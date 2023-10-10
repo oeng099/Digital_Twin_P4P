@@ -11,7 +11,6 @@ while(true){
     console.log("--------")
     console.log("The current target temperature is: "+obj["acState"]["targetTemperature"]+" degrees Celsius")
     console.log("--------")
-    await sensibo.turnDeviceOff("XAY6jwyi")
     
     if(obj["acState"]["on"] == true){
         console.log("The AC is currently on");
@@ -41,13 +40,13 @@ async function regulateTemp(){
     const targetTemp = sensiboStats["acState"]["targetTemperature"];
     console.log("CurrentTemp: "+currentTemp+" | targetTemp: "+targetTemp)
     try {
-        if(currentTemp > targetTemp){
+        if((currentTemp > targetTemp+1 && !sessionStorage.getItem("userInput")) || (currentTemp > targetTemp && sessionStorage.getItem("userInput"))){
                 await sensibo.setMode("XAY6jwyi", "cool")
                 console.log("set mode to cool");
                 if(!sensiboStats["acState"]["on"]){
                     await sensibo.turnDeviceOn("XAY6jwyi")
             }
-        }else if(currentTemp < targetTemp){
+        }else if((currentTemp < targetTemp-1 && !sessionStorage.getItem("userInput")) || (currentTemp < targetTemp && sessionStorage.getItem("userInput"))){
                 await sensibo.setMode("XAY6jwyi", "heat")
                 console.log("set mode to heat")
                 if(!sensiboStats["acState"]["on"]){
@@ -55,6 +54,7 @@ async function regulateTemp(){
                 }
         } else{
             await sensibo.turnDeviceOff("XAY6jwyi")
+            sessionStorage.getItem("userInput", false);
         }
     } catch (error) {
         console.log(error)
