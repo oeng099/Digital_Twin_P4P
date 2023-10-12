@@ -23,7 +23,7 @@ while(true){
     saveToCo2();
     saveToTemp();
     saveToHumid();
-    //regulateTemp();
+    // regulateTemp();
     
     // console.log("fetching")
     // const backendRes = await fetch('http://localhost:3500/ble');
