@@ -19,8 +19,6 @@ async function getSpecificDevice(deviceUID){
     return dataObj
   } catch (error) {
     console.log(error)
-    console.log("retrying")
-    getSpecificDevice(deviceUID)
   }
 }
 

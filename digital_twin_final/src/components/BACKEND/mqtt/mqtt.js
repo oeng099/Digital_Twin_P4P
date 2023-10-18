@@ -33,9 +33,10 @@ client.on("connect", () => {
 
 client.on("message", (topic,message) => {
   console.log(topic.toString()+':'+message.toString());
-  energyReading = message.toString;
+  energyReading = message.toString();
 });
-
+const delay = ms => new Promise(res => setTimeout(res, ms));
+await delay(3000)
 const ref = db.collection("energy")
 
 while(true){

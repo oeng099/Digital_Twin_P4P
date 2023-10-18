@@ -23,11 +23,8 @@ while(true){
     saveToCo2();
     saveToTemp();
     saveToHumid();
-    // regulateTemp();
+    regulateTemp();
     
-    // console.log("fetching")
-    // const backendRes = await fetch('http://localhost:3500/ble');
-    // console.log(backendRes)
     console.log("waiting 5 minutes")
     const delay = ms => new Promise(res => setTimeout(res, ms));
     await delay(300000)
@@ -36,19 +33,26 @@ while(true){
 
 async function regulateTemp(){
     const sensiboStats = await sensibo.getSpecificDevice("XAY6jwyi")
-    const currentTemp = sensiboStats["measurements"]["temperature"];
-    const targetTemp = sensiboStats["acState"]["targetTemperature"];
+    var currentTemp = sensiboStats["measurements"]["temperature"];
+    var targetTemp = sensiboStats["acState"]["targetTemperature"];
+    var mode = sensiboStats["acState"]["mode"]
     console.log("CurrentTemp: "+currentTemp+" | targetTemp: "+targetTemp)
     try {
-        if((currentTemp > targetTemp+1 && !sessionStorage.getItem("userInput")) || (currentTemp > targetTemp && sessionStorage.getItem("userInput"))){
-                await sensibo.setMode("XAY6jwyi", "cool")
-                console.log("set mode to cool");
+        if((currentTemp > targetTemp+1 && !sessionStorage.getItem("userInput")) || (currentTemp > targetTemp+0.2 && sessionStorage.getItem("userInput"))){
+                if (mode != "cool"){
+                    await sensibo.setMode("XAY6jwyi", "cool")
+                    console.log("set mode to cool");
+                }
                 if(!sensiboStats["acState"]["on"]){
+                    console.log("turning on");
                     await sensibo.turnDeviceOn("XAY6jwyi")
             }
-        }else if((currentTemp < targetTemp-1 && !sessionStorage.getItem("userInput")) || (currentTemp < targetTemp && sessionStorage.getItem("userInput"))){
-                await sensibo.setMode("XAY6jwyi", "heat")
-                console.log("set mode to heat")
+        }else if((currentTemp < targetTemp-1 && !sessionStorage.getItem("userInput")) || (currentTemp < targetTemp-0.2 && sessionStorage.getItem("userInput"))){
+                if (mode != "heat"){
+                    await sensibo.setMode("XAY6jwyi", "heat")
+                    console.log("set mode to heat")
+                }
+
                 if(!sensiboStats["acState"]["on"]){
                     await sensibo.turnDeviceOn("XAY6jwyi")
                 }
